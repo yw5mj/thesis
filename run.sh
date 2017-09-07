@@ -13,5 +13,9 @@ mkdir -p output
 cp main.bbl $outputfile.bbl
 pdflatex -output-directory=output -jobname=$outputfile main.tex 
 pdflatex -output-directory=output -jobname=$outputfile main.tex >/dev/null
-mv output/$outputfile.pdf ~/www
 rm $outputfile.bbl
+if [ "$1" == "--local" ]
+then
+    exit
+fi
+mv output/$outputfile.pdf ~/www

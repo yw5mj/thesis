@@ -1,0 +1,138 @@
+\documentclass[11pt,a4paper,oldfontcommands]{memoir}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[dvips]{graphicx}
+\usepackage{xcolor}
+\usepackage{times}
+
+\usepackage[
+breaklinks=true,colorlinks=true,
+%linkcolor=blue,urlcolor=blue,citecolor=blue,% PDF VIEW
+linkcolor=black,urlcolor=black,citecolor=black,% PRINT
+bookmarks=true,bookmarksopenlevel=2]{hyperref}
+
+\usepackage{geometry}
+% PDF VIEW
+% \geometry{total={210mm,297mm},
+% left=25mm,right=25mm,%
+% bindingoffset=0mm, top=25mm,bottom=25mm}
+% PRINT
+\geometry{total={210mm,297mm},
+left=20mm,right=20mm,
+bindingoffset=10mm, top=25mm,bottom=25mm}
+
+\OnehalfSpacing
+%\linespread{1.3}
+
+%%% CHAPTER'S STYLE
+\chapterstyle{bianchi}
+%\chapterstyle{ger}
+%\chapterstyle{madsen}
+%\chapterstyle{ell}
+%%% STYLE OF SECTIONS, SUBSECTIONS, AND SUBSUBSECTIONS
+\setsecheadstyle{\Large\bfseries\sffamily\raggedright}
+\setsubsecheadstyle{\large\bfseries\sffamily\raggedright}
+\setsubsubsecheadstyle{\bfseries\sffamily\raggedright}
+
+
+%%% STYLE OF PAGES NUMBERING
+%\pagestyle{companion}\nouppercaseheads 
+%\pagestyle{headings}
+%\pagestyle{Ruled}
+\pagestyle{plain}
+\makepagestyle{plain}
+\makeevenfoot{plain}{\thepage}{}{}
+\makeoddfoot{plain}{}{}{\thepage}
+\makeevenhead{plain}{}{}{}
+\makeoddhead{plain}{}{}{}
+
+
+\maxsecnumdepth{subsection} % chapters, sections, and subsections are numbered
+\maxtocdepth{subsection} % chapters, sections, and subsections are in the Table of Contents
+
+
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+
+\begin{document}
+
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+%   TITLEPAGE
+%
+%   due to variety of titlepage schemes it is probably better to make titlepage manually
+%
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+\thispagestyle{empty}
+
+{%%%
+\sffamily
+\centering
+\Large
+
+~\vspace{\fill}
+
+{\huge 
+Search for new ZZ resonances in two leptons two neutrinos final states at 13 TeV using 2016 CMS full dataset
+}
+
+\vspace{2.5cm}
+
+{\LARGE
+Yanchu Wang\\
+}
+Charlottesville, VA\\[1em]
+
+B.S., University of Science and Technology of China, 2013
+
+\vspace{3.5cm}
+\vspace{\fill}
+\textrm{\textit{A Thesis presented to the Graduate Faculty of the University of Virginia in Candidacy for the Degree of Doctor of Philosophy}}
+
+\vspace{3.5cm}
+
+
+\vspace{\fill}
+Department of Physics\\[1em]
+University of Virginia\\
+May, 2018
+
+%%%
+}%%%
+
+\cleardoublepage
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+
+\tableofcontents*
+
+\clearpage
+
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+
+\chapter{Introduction}
+\input{components/Intro}
+\chapter{The LHC and CMS detector}
+\input{components/lhccms}
+\chapter{Physics Objects Reconstruction}
+\input{components/objects}
+\chapter{Data and Monte-Carlo Samples}
+\input{components/samples}
+\chapter{Event Selections}
+\input{components/selections}
+\chapter{Background Modeling and Control Plots}
+\input{components/backgrounds}
+\chapter{Systematic Uncertainties}
+\input{components/systematics}
+\chapter{Results and Comparison with Previous Searches}
+\input{components/result}
+
+\appendix
+
+\chapter{Anything to be added}
+
+\bibliographystyle{unsrt}
+\bibliography{main}
+
+\end{document}
+

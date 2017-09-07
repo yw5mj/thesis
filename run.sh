@@ -14,8 +14,8 @@ cp main.bbl $outputfile.bbl
 pdflatex -output-directory=output -jobname=$outputfile main.tex 
 pdflatex -output-directory=output -jobname=$outputfile main.tex >/dev/null
 rm $outputfile.bbl
-if [ "$1" == "--local" ]
+if [[ "$(hostname)" == *".cern.ch" ]]
 then
-    exit
+    mv output/$outputfile.pdf ~/www
 fi
-mv output/$outputfile.pdf ~/www
+

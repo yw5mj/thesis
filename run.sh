@@ -9,6 +9,7 @@ then
     echo "======= RUNNING bibrun ======"
     ./bin/bibrun.sh
 fi
+mkdir -p output
 cp main.bbl $outputfile.bbl
 pdflatex -output-directory=output -jobname=$outputfile main.tex 
 pdflatex -output-directory=output -jobname=$outputfile main.tex >/dev/null

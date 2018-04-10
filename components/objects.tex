@@ -23,10 +23,10 @@ The vertex reconstruction aims at determine the locations of all the proton-prot
 The calorimeter clustering serves four purpose in general: detect and measure the energy and direction of stable neutral particles; separate these neutral particles from charged hadron energy deposits; reconstruct and identify electrons and all accompanying bremsstrahlung photons; and help the energy measurement of charged hadrons for which the track parameters were not determined accurately. An algorithm is developed and the clustering process is performed seperately for EB, EE, ES, HB and HE. Firstly cluster seeds are selected as calorimeter cells with deposited energy larger than a threshold and its neighbouring cells. The topological clusters then spread from the seed to the nearby cells with energy beyond cerntain thresholds. Finally a fitting for each topological cluster is performed based on an expectation-maximization algorithm to evaluate position and amplitude of the particle clusters.
 
 \subsection{Tracks for electrons}
-Because of the significant tracker thickness, most of the electrons emit considerable fraction of their energy in the form of bremsstrahlung photons before reaching the ECAL. To reconstruct the properties of an electron, the energy of the bremsstrahlung photons in ECAL must be taken into account as well, apart from the energy deposited by the final electron. A tracker-based electron seeding method was developed
+Because of the significant tracker thickness, most of the electrons emit considerable fraction of their energy in the form of bremsstrahlung photons before reaching the ECAL. To reconstruct the properties of an electron, the energy of the bremsstrahlung photons in ECAL must be taken into account as well, apart from the energy deposited by the final electron. A tracker-based electron seeding method was developed. When the radiated energy is small, the electron track can be reconstructed across the whole tracking system with a well-behaved fit $\chi^2$, and the reconstructed momentum should match the energy deposited in the corresponding ECAL cluster. However when energetic photons are radiated, the momentum change of the electron will lead to a large $\chi^2$ and missing hits in the tracker. In these cases, a selection of tracker hits are performed based on the $\chi^2$ value and number of hits in the previous KF fit, and these selected hits are fit again with a Gaussian-sum filter (GSF)~\cite{ob_electronconst} which is more adapted to the electrons as energy losses along the trajectory are considered. 
 
 \subsection{Tracks for muons}
-
+The muons leave their trajectories in the tracking system where the momenta of the muons can be precisely measured, and can be well identified over the full detector especially with the muon chambers. Hits within the DT and CSC detector are clustered to form track segments. These track segments are then used as seeds to reconstruct the muon trajectory throughout DT, CSC, and RPC hits. The result of the final fitting is refered to as a standalone-muon track. With the information of the reconstructed tracks in the tracking system, two more collections of high-level muons physics objects can also be obtained: the global muon and tracker muon (See section~\ref{sec:muonrecon}).
 
 \section{Electron}
 
@@ -36,7 +36,7 @@ Because of the significant tracker thickness, most of the electrons emit conside
 \subsection{Photon Reconstruction}
 \subsection{Phoon Identification}
 \section{Muon}
-\subsection{Muon Reconstruction}
+\subsection{Muon Reconstruction}\label{sec:muonrecon}
 \subsection{Muon Identification}
 \subsubsection{Muon ID}
 \subsubsection{Muon Isolation}

@@ -4,7 +4,7 @@ The information recieved from the detector is in the format of detector hits and
 The Particle-Flow algorithm~\cite{ob_pf} is used for event and particle reconstructions.
 
 \section{Particle Flow Algorithm}
-The PF algorithm starts from reconstructing the basic PF elements including the trajectories of charged particles, electron/muon tracks and calorimeter clusters, based on the information collected from each subsystem of the detector. Then a linking algorithm is used to form a block of these PF elements possibly related to a single physics object. Afterwards, the particle constructions and identifications are processed based on the blocks. The constructions of the PF elements are described briefly as below.
+The PF algorithm starts from reconstructing the basic PF elements including the trajectories of charged particles, electron/muon tracks and calorimeter clusters, based on the information collected from each subsystem of the detector. Then a link algorithm is used to form a block of these PF elements possibly related to a single physics object. Afterwards, the particle constructions and identifications are processed based on the blocks. The constructions of the PF elements are described briefly as below.
 
 \subsection{Charged-particle tracks and vertices}
 The construction of charged-particle tracks provides supports for particle reconstructions and identifications, including the measurement of the momentum of energetic and isolated muons, identification of energetic and isolated hadronic $\tau$ decays, and tagging b quark jets. A combinatorial track finder based on Kalman Filtering (KF) is used for track construction~\cite{ob_trackconst1,ob_trackconst2}. It starts with a few hits compatible with a charged-particle trajectory in the tracking system; and then finds hits from all the tracker layers along this charged-particle trajectory; and finally performs fitting to determine the trajectory and the particle properties including origin, transverse momentum and direction. To increase the reconstruction efficiency and suppress the fake rate, the combinatorial track finder was applied in several successive iterations.
@@ -20,7 +20,7 @@ The vertex reconstruction aims at determine the locations of all the proton-prot
 \end{figure}
 
 \subsection{Calorimeter clusters}
-The calorimeter clustering serves four purpose in general: detect and measure the energy and direction of stable neutral particles; separate these neutral particles from charged hadron energy deposits; reconstruct and identify electrons and all accompanying bremsstrahlung photons; and help the energy measurement of charged hadrons for which the track parameters were not determined accurately. An algorithm is developed and the clustering process is performed seperately for EB, EE, ES, HB and HE. Firstly cluster seeds are selected as calorimeter cells with deposited energy larger than a threshold and its neighbouring cells. The topological clusters then spread from the seed to the nearby cells with energy beyond cerntain thresholds. Finally a fitting for each topological cluster is performed based on an expectation-maximization algorithm to evaluate position and amplitude of the particle clusters.
+The calorimeter clustering serves four purpose in general: detect and measure the energy and direction of stable neutral particles; separate these neutral particles from charged hadron energy deposits; reconstruct and identify electrons and all accompanying bremsstrahlung photons; and help the energy measurement of charged hadrons for which the track parameters were not determined accurately. An algorithm is developed and the clustering process is performed seperately for EB, EE, ES, HB and HE. Firstly cluster seeds are selected as calorimeter cells with deposited energy larger than a threshold and its neighbouring cells. The topological clusters then spread from the seed to the nearby cells with energy beyond cerntain thresholds. Finally a fitting for each topological cluster is performed based on an expectation-maximization algorithm to evaluate position and amplitude of the particle clusters. 
 
 \subsection{Tracks for electrons}
 Because of the significant tracker thickness, most of the electrons emit considerable fraction of their energy in the form of bremsstrahlung photons before reaching the ECAL. To reconstruct the properties of an electron, the energy of the bremsstrahlung photons in ECAL must be taken into account as well, apart from the energy deposited by the final electron. A tracker-based electron seeding method was developed. When the radiated energy is small, the electron track can be reconstructed across the whole tracking system with a well-behaved fit $\chi^2$, and the reconstructed momentum should match the energy deposited in the corresponding ECAL cluster. However when energetic photons are radiated, the momentum change of the electron will lead to a large $\chi^2$ and missing hits in the tracker. In these cases, a selection of tracker hits are performed based on the $\chi^2$ value and number of hits in the previous KF fit, and these selected hits are fit again with a Gaussian-sum filter (GSF)~\cite{ob_electronconst} which is more adapted to the electrons as energy losses along the trajectory are considered. 
@@ -28,13 +28,71 @@ Because of the significant tracker thickness, most of the electrons emit conside
 \subsection{Tracks for muons}
 The muons leave their trajectories in the tracking system where the momenta of the muons can be precisely measured, and can be well identified over the full detector especially with the muon chambers. Hits within the DT and CSC detector are clustered to form track segments. These track segments are then used as seeds to reconstruct the muon trajectory throughout DT, CSC, and RPC hits. The result of the final fitting is refered to as a standalone-muon track. With the information of the reconstructed tracks in the tracking system, two more collections of high-level muons physics objects can also be obtained: the global muon and tracker muon (See section~\ref{sec:muonrecon}).
 
+\subsection{Link algorithm}
+To reconstruct a physics object, a link algorithm is applied to connect the related PF elements from different subdetectors. The PF elements that can be considered by the algorithem can only be the nearest neighbours in the ($\phi$,$\eta$) plane to any of the elements in the linked block starting from a seed element. The element will be added to the block after the distance of the link is examinated. This process continues until the PF block is formed and the reconstruction of the corresponding particle starts. Links between GSF electron tracks and the ECAL clusters can be established for electrons; links among calorimeter clusters can be established for various particle reconstruction processes, specifically trivial links among ECAL clusters with close $\eta$ but spread $\phi$ form link blocks called superclusters; links between tracks and muon segments can be established for muon reconstruction.
+
 \section{Electron}
+The electron reconstruction and identification are performed mainly based on the information from electron tracks in the tracking system and the ECAL clusters. ~\cite{ob_electronconst2}
 
 \subsection{Electron Reconstruction}
-\subsection{Electron Identification}
+The electron reconstruction starts from a GSF electron track. In the link algorithm, apart from the electron cluster in ECAL, clusters nearby the extrapolated tangents of the GSF track will also be linked to the PF block as potential bremsstrahlung photons emitted from the electron. A GSF track will be considered a electron candidate if in the PF block the ECAL cluster corresponding to the electron shower is not linked to more than 2 tracks. To be reconstructed as an electron, the energy deposited in the HCAL cells within the region $\Delta R<0.15$ to the ECAL clusters cannot exceed 10\% of that in the ECAL clusters. 
+
+\vspace{0.3cm}
+The ECAL clusters in the PF block that can be linked to either the GSF track tangents or the supercluster will be associated with the candidate electron and will be used for the energy calculation of the electron. So is the GSF track if the momentum calculated agrees with the energy deposited in the calorimeters. The position information ($\eta$,$\phi$) assigned to the electron is obtained from the GSF tracks. Once an element is assigned associated to a reconstructed particle, it will be masked against further processing in other object constructions. The calculated energy from the calorimeter clusters will be corrected in terms of energy and $\eta$, to compensate the energy loss in the process. And the final energy assigned to the electron will be obtained from a combination of the corrected energy from the calorimeter clusters and the momentum of the GSF track. 
+
+\vspace{0.3cm}
+Furthermore, electrons used in physics analyses must meet additional identification and isolation requirements.
+
+\subsection{Electron Identification and Isolation}
+The electron candidates used in this analysis are required to pass the \texttt{loose} cut-based identification (ID) and isolation (ISO) recommended by the EGamma Physics Object Group (POG) for 2016 data.
+
+The ID and ISO criteria set cuts on the following variables, and the cut values are given in Table~\ref{tab:electron-id}.
+
+\begin{itemize}%[noitemsep,nolistsep]
+\item the $\sigma_{i\eta,i\eta}$ describing the shape of the supercluster;
+\item the impact parameters, $|d_{0}|$ and $|d_{z}|$;
+\item the geometric distance, $|\Delta\eta_{in}|$ and $|\Delta\phi_{in}|$, between the supercluster and the matched track;
+\item the ratio of the energy deposits in HCal and ECAL, \texttt{hOverE};
+\item the relative combined PF isolation following correction for
+  pile-up contamination in the
+  Effective Area (EA), \texttt{relIsoWithEA}; % it is the pf Iso used in our analysis 
+\item the difference between the tracker momentum and ECAL energy, $|1/E-1/p|$;
+\item the maximal expected missing inner hits;
+\item a veto on the electrons that are likely to be produced by photon conversions.
+\end{itemize}
+
+
+
+\begin{table}[htb!]
+  \center
+  \topcaption{The cuts used in the POG \texttt{loose} electron identification.}
+  \label{tab:electron-id}
+  \begin{tabular}{r c c c}
+    \hline
+    Variable & Barrel & Endcap \\
+    \hline
+    $|\eta_{\rm SC}|$ acceptance & $< 1.479$ & $(1.566, 2.5)$\\
+    $\sigma_{i\eta,i\eta} <$ & 0.011  & 0.0314 \\
+    $|\Delta\eta_{in}| <$ & 0.00477  & 0.00868 \\
+    $\Delta\phi_{in} <$ & 0.222  & 0.213 \\
+    \texttt{hOverE} $<$ & 0.298  & 0.101 \\
+    \texttt{relIsoWithEA} $<$ & 0.0994  & 0.107 \\
+    $|1/E - 1/p| <$ & 0.241  & 0.14 \\
+    $|d_{0}| (cm) <$ & 0.05  & 0.10 \\
+    $|d_{z}| (cm) <$ & 0.10  & 0.20 \\
+    expectedMissingInnerHits $\leq$ & 1  & 1 \\
+    conversion veto & yes  & yes \\
+    \hline
+  \end{tabular}
+\end{table}
+
 \section{Photon}
+The photon reconstruction shares many similarities with electrons, as photons can convert into $e^{-}e^{+}$ pairs and emit bremsstrahlung photons like the electrons. But the reconstruction of photons relies mostly on ECAL.
+
 \subsection{Photon Reconstruction}
-\subsection{Phoon Identification}
+The reconstruction of photon starts from an ECAL supercluster which has no link to a GSF track. Like electrons, the reconstruction of photons requires the energy deposited in close HCAL cells to be less than 10\% that in ECAL. The energy deposited in the supercluster will be calculated and ECAL energy correction will also be applied to the supercluster. The result will be assigned to the photon as its energy.
+
+\subsection{Photon Identification}
 \section{Muon}
 \subsection{Muon Reconstruction}\label{sec:muonrecon}
 \subsection{Muon Identification}

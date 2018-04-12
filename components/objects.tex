@@ -65,7 +65,7 @@ The ID and ISO criteria set cuts on the following variables, and the cut values 
 
 \begin{table}[htb!]
   \center
-  \topcaption{The cuts used in the POG \texttt{loose} electron identification.}
+  \caption{The cuts used in the POG \texttt{loose} electron identification.}
   \label{tab:electron-id}
   \begin{tabular}{r c c c}
     \hline
@@ -93,7 +93,7 @@ Corrections are applied to the calculated PF ISO to compensate the effect caused
 \vspace{0.3cm}
 For electrons, the $\rho$-effective area correction does not affect much on the $ISO_{ch}$ term, thus the absolute value of their combined PF isolation is defined in Equation~\ref{eqn:ob_egmiso},
 \begin{equation}
-ISO=$ISO_{ch}$+max(0,$ISO_{nh}$+$ISO_{photon}$-PU)
+ISO=ISO_{ch}+max(0,ISO_{nh}+ISO_{photon}-PU)
 \label{eqn:ob_egmiso}
 \end{equation}
 
@@ -106,7 +106,7 @@ The photon reconstruction shares many similarities with electrons, as photons ca
 The photon objects used in this analysis are also required to pass the \texttt{loose} cut-based ID and ISO following the recommendation of the EGamma POG. The criteria are listed in Table~\ref{tab:photon-id}.
 \begin{table}[htb!]
   \center
-  \topcaption{The cuts used in the POG \texttt{loose} photon identification.}
+  \caption{The cuts used in the POG \texttt{loose} photon identification.}
   \label{tab:photon-id}
   \begin{tabular}{r c c c}
     \hline

@@ -10,7 +10,7 @@ The PF algorithm starts from reconstructing the basic PF elements including the 
 The construction of charged-particle tracks provides supports for particle reconstructions and identifications, including the measurement of the momentum of energetic and isolated muons, identification of energetic and isolated hadronic $\tau$ decays, and tagging b quark jets. A combinatorial track finder based on Kalman Filtering (KF) is used for track construction~\cite{ob_trackconst1,ob_trackconst2}. It starts with a few hits compatible with a charged-particle trajectory in the tracking system; and then finds hits from all the tracker layers along this charged-particle trajectory; and finally performs fitting to determine the trajectory and the particle properties including origin, transverse momentum and direction. To increase the reconstruction efficiency and suppress the fake rate, the combinatorial track finder was applied in several successive iterations.
 
 \vspace{0.3cm}
-The vertex reconstruction aims at determine the locations of all the proton-proton interactions and uncertainties in each event. The vertex reconstruction uses the information of the reconstructed charged-particle tracks. After determining the candidate vertices with the deterministic annealing (DA) algorithm and fitting them with at least two matched tracks using an adaptive vertex fitter, good vertices are selected with quality criteria including being consistent with the collision region (referred to as beam spots) and matched to a minimum of four tracks. The primary vertex of an event is considered to be the vertex with the largest sum of the squared track momenta. And the other vertices are regarded as pileup vertices. Figure~\ref{fig:ob_Nvertex} shows the vertices number distribution for the data collected in 2016.
+The vertex reconstruction aims at determine the locations of all the proton-proton interactions and uncertainties in each event. The vertex reconstruction uses the information of the reconstructed charged-particle tracks. After determining the candidate vertices with the deterministic annealing (DA) algorithm and fitting them with at least two matched tracks using an adaptive vertex fitter, good vertices are selected with quality criteria including being consistent with the collision region (referred to as beam spots) and matched to a minimum of four tracks. The primary vertex of an event is considered to be the vertex with the largest sum of the squared track momenta. And the other vertices are regarded as pile-up vertices. Figure~\ref{fig:ob_Nvertex} shows the vertices number distribution for the data collected in 2016.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.72\linewidth]{figures/ob_Nvertex.png}
@@ -31,11 +31,11 @@ The muons leave their trajectories in the tracking system where the momenta of t
 \subsection{Link algorithm}
 To reconstruct a physics object, a link algorithm is applied to connect the related PF elements from different subdetectors. The PF elements that can be considered by the algorithem can only be the nearest neighbours in the ($\phi$,$\eta$) plane to any of the elements in the linked block starting from a seed element. The element will be added to the block after the distance of the link is examinated. This process continues until the PF block is formed and the reconstruction of the corresponding particle starts. Links between GSF electron tracks and the ECAL clusters can be established for electrons; links among calorimeter clusters can be established for various particle reconstruction processes, specifically trivial links among ECAL clusters with close $\eta$ but spread $\phi$ form link blocks called superclusters; links between tracks and muon segments can be established for muon reconstruction.
 
-\section{Electron}
+\section{Electron Reconstruction}
 The electron reconstruction and identification are performed mainly based on the information from electron tracks in the tracking system and the ECAL clusters. ~\cite{ob_electronconst2}
 
-\subsection{Electron Reconstruction}
-The electron reconstruction starts from a GSF electron track. In the link algorithm, apart from the electron cluster in ECAL, clusters nearby the extrapolated tangents of the GSF track will also be linked to the PF block as potential bremsstrahlung photons emitted from the electron. A GSF track will be considered a electron candidate if in the PF block the ECAL cluster corresponding to the electron shower is not linked to more than 2 tracks. To be reconstructed as an electron, the energy deposited in the HCAL cells within the region $\Delta R<0.15$ to the ECAL clusters cannot exceed 10\% of that in the ECAL clusters. 
+\vspace{0.3cm}
+The electron reconstruction starts from a GSF electron track. In the link algorithm, apart from the electron cluster in ECAL, clusters nearby the extrapolated tangents of the GSF track will also be linked to the PF block as potential bremsstrahlung photons emitted from the electron. A GSF track will be considered a electron candidate if in the PF block the ECAL cluster corresponding to the electron shower is not linked to more than 2 tracks. 
 
 \vspace{0.3cm}
 The ECAL clusters in the PF block that can be linked to either the GSF track tangents or the supercluster will be associated with the candidate electron and will be used for the energy calculation of the electron. So is the GSF track if the momentum calculated agrees with the energy deposited in the calorimeters. The position information ($\eta$,$\phi$) assigned to the electron is obtained from the GSF tracks. Once an element is assigned associated to a reconstructed particle, it will be masked against further processing in other object constructions. The calculated energy from the calorimeter clusters will be corrected in terms of energy and $\eta$, to compensate the energy loss in the process. And the final energy assigned to the electron will be obtained from a combination of the corrected energy from the calorimeter clusters and the momentum of the GSF track. 
@@ -44,13 +44,13 @@ The ECAL clusters in the PF block that can be linked to either the GSF track tan
 Furthermore, electrons used in physics analyses must meet additional identification and isolation requirements.
 
 \subsection{Electron Identification and Isolation}
-The electron candidates used in this analysis are required to pass the \texttt{loose} cut-based identification (ID) and isolation (ISO) recommended by the EGamma Physics Object Group (POG) for 2016 data.
+The electron candidates used in this analysis are required to pass the \texttt{loose} cut-based identification (ID) and isolation (ISO) recommended by the CMS EGamma Physics Object Group (POG) for 2016 data.
 
 The ID and ISO criteria set cuts on the following variables, and the cut values are given in Table~\ref{tab:electron-id}.
 
 \begin{itemize}%[noitemsep,nolistsep]
+\item the $\eta_{\rm SC}$ denotes the $\eta$ value of the corresponding ECAL super cluster;
 \item the $\sigma_{i\eta,i\eta}$ describing the shape of the supercluster;
-\item the impact parameters, $|d_{0}|$ and $|d_{z}|$;
 \item the geometric distance, $|\Delta\eta_{in}|$ and $|\Delta\phi_{in}|$, between the supercluster and the matched track;
 \item the ratio of the energy deposits in HCal and ECAL, \texttt{hOverE};
 \item the relative combined PF isolation following correction for
@@ -71,30 +71,62 @@ The ID and ISO criteria set cuts on the following variables, and the cut values 
     \hline
     Variable & Barrel & Endcap \\
     \hline
-    $|\eta_{\rm SC}|$ acceptance & $< 1.479$ & $(1.566, 2.5)$\\
+    $|\eta_{\rm SC}|$ acceptance & $(0, 1.479)$ & $(1.479, 2.5)$\\
     $\sigma_{i\eta,i\eta} <$ & 0.011  & 0.0314 \\
     $|\Delta\eta_{in}| <$ & 0.00477  & 0.00868 \\
     $\Delta\phi_{in} <$ & 0.222  & 0.213 \\
     \texttt{hOverE} $<$ & 0.298  & 0.101 \\
     \texttt{relIsoWithEA} $<$ & 0.0994  & 0.107 \\
     $|1/E - 1/p| <$ & 0.241  & 0.14 \\
-    $|d_{0}| (cm) <$ & 0.05  & 0.10 \\
-    $|d_{z}| (cm) <$ & 0.10  & 0.20 \\
     expectedMissingInnerHits $\leq$ & 1  & 1 \\
     conversion veto & yes  & yes \\
     \hline
   \end{tabular}
 \end{table}
 
-\section{Photon}
-The photon reconstruction shares many similarities with electrons, as photons can convert into $e^{-}e^{+}$ pairs and emit bremsstrahlung photons like the electrons. But the reconstruction of photons relies mostly on ECAL.
+\subsubsection{More About PF Isolation}
+The PF isolation requirment is introduced in the electron ID as shown in Table~\ref{tab:electron-id}. The calcuation of the PF ISO is based on the PF algorithm: for a given electron or photon, the sum of transverse momenta of all the PF elements with the type of charged hadron, neutral hadron or photon will be calculated if the PF element falls in the isolation cone arround the electron/photon. The cone is usually defined as the region of $\Delta R<0.3$. The separately calculated isolations for the charged hadrons, neutral hadrons and photons can be noted as $ISO_{ch}$,$ISO_{nh}$,$ISO_{photon}$.
 
-\subsection{Photon Reconstruction}
-The reconstruction of photon starts from an ECAL supercluster which has no link to a GSF track. Like electrons, the reconstruction of photons requires the energy deposited in close HCAL cells to be less than 10\% that in ECAL. The energy deposited in the supercluster will be calculated and ECAL energy correction will also be applied to the supercluster. The result will be assigned to the photon as its energy.
+\vspace{0.3cm}
+Corrections are applied to the calculated PF ISO to compensate the effect caused by contamination from pile-up. In the case of electron ISO, $\rho$-effective area corrections are applied. The effect from the pile-up is considered to be $PU= \rho \times effective_area$, where $\rho$ is the event-specific average pile-up energy density per unit area in the $\phi-\eta$ plane, and the effective area suggests the effective area affected by pile-up for each type of ISO. 
 
-\subsection{Photon Identification}
-\section{Muon}
-\subsection{Muon Reconstruction}\label{sec:muonrecon}
+\vspace{0.3cm}
+For electrons, the $\rho$-effective area correction does not affect much on the $ISO_{ch}$ term, thus the absolute value of their combined PF isolation is defined in Equation~\ref{eqn:ob_egmiso},
+\begin{equation}
+ISO=$ISO_{ch}$+max(0,$ISO_{nh}$+$ISO_{photon}$-PU)
+\label{eqn:ob_egmiso}
+\end{equation}
+
+And the relative isolation shown in Table~\ref{tab:electron-id} is considered to be $relIso=ISO/p_{T}$.
+
+\section{Photon Reconstruction}
+The photon reconstruction shares many similarities with electrons, as photons can convert into $e^{-}e^{+}$ pairs and emit bremsstrahlung photons like the electrons. But the reconstruction of photons relies mostly on ECAL. The reconstruction of photon starts from an ECAL supercluster which has no link to a GSF track. The energy deposited in the supercluster will be calculated and ECAL energy correction will also be applied to the supercluster. The result will be assigned to the photon as its energy.
+
+\subsection{Photon Identification and Isolation}
+The photon objects used in this analysis are also required to pass the \texttt{loose} cut-based ID and ISO following the recommendation of the EGamma POG. The criteria are listed in Table~\ref{tab:photon-id}.
+\begin{table}[htb!]
+  \center
+  \topcaption{The cuts used in the POG \texttt{loose} photon identification.}
+  \label{tab:photon-id}
+  \begin{tabular}{r c c c}
+    \hline
+    Variable & Barrel & Endcap \\
+    \hline
+    $|\eta_{\rm SC}|$ acceptance & $(0, 1.479)$ & $(1.479, 2.5)$\\
+    $\sigma_{i\eta,i\eta} <$ & 0.0103  & 0.0301 \\
+    \texttt{hOverE} $<$ & 0.597  & 0.481 \\
+    $ISO_{ch} <$ & 1.295 & 1.011 \\
+    $ISO_{nh} <$ & $10.910+0.0148\times p_{T}+0.000017\times {p_{T}}^2$ & $5.931+0.0163*pt+0.000014*pt^2$ \\
+    $ISO_{photon} <$ & $3.630+0.0047\times p_{T}$ & $6.641+0.0034\times p_{T}$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+Unlike electrons, the photon ISO has specific requirements on each type of isolations, instead of a single criterion on a combined ISO value.
+
+\section{Muon Reconstruction}\label{sec:muonrecon}
+
 \subsection{Muon Identification}
 \subsubsection{Muon ID}
 \subsubsection{Muon Isolation}

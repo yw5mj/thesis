@@ -46,6 +46,7 @@ Furthermore, electrons used in physics analyses must meet additional identificat
 \subsection{Electron Identification and Isolation}
 The electron candidates used in this analysis are required to pass the \texttt{loose} cut-based identification (ID) and isolation (Iso) recommended by the CMS EGamma Physics Object Group (POG) for 2016 data.
 
+\vspace{0.3cm}
 The ID and Iso criteria set cuts on the following variables, and the cut values are given in Table~\ref{tab:electron-id}.
 
 \begin{itemize}%[noitemsep,nolistsep]
@@ -126,7 +127,7 @@ The photon objects used in this analysis are also required to pass the \texttt{l
 Unlike electrons, the photon Iso has specific requirements on each type of isolations, instead of a single criterion on a combined Iso value.
 
 \section{Muon Reconstruction}\label{sec:muonrecon}
-The CMS muon reconstruction is mainly based on the information collected from the tracker and muon chambers. Generally two collections of muon objects are constructed: the global muon and the tracker muon.~\ref{ob_muonconst}
+The CMS muon reconstruction is mainly based on the information collected from the tracker and muon chambers. Generally two collections of muon objects are constructed: the global muon and the tracker muon.~\cite{ob_muonconst}
 \begin{itemize}
 \item \texttt{Global muon} starts from a stand-alone muon track. If the stand-alone muon track can be matched to a charged-particle track in the tracking system and the properties from the tracks agrees, a globel fit is performed over the two tracks to find a global muon track.
 \item \texttt{Tracker muon} starts from a charged-particle track in the tracking system with $p_{T}$ over 0.5 GeV and momentum over 2.5 GeV. If one or more muon segments in the muon chamber system match the extrapolated track of the charged-particle track, then the track is considered a tracker muon track.
@@ -137,7 +138,7 @@ The reconstruction of global muons and tracker muons are performed separately. A
 \vspace{0.3cm}
 The momenta calculated from the inner tracks are assigned to the muons with $p_{T}$ less than 200 GeV. For those with $p_T$ beyond 200 GeV, the TuneP algorithm is used: the momenta are calculated from the best fit track among the inner track, the global track, the track combining the inner tracker and the first muon station, and the globally fit track after discarding muon chamber stations with high occupancy. 
 
-\subsection{Muon Identification}
+\subsection{Muon Identification and Isolation}
 Charged hadrons can be faked as muons after reconstruction. To suppress the fake rate of reconstructed muons, identifications are required for muons used in CMS analyses. In this analysis, two types of muon ID are used: the muon \texttt{High $p_T$} ID and \texttt{Tracker High $p_T$} ID. 
 
 \subsubsection{Muon High $p_T$ ID}
@@ -156,7 +157,7 @@ The \texttt{High $p_T$} ID is defined below, based on the Muon POG official reco
 The \texttt{High $p_T$} ID is designed aiming at the best reconstruction of the muon track parameters for high-pT muons. To be consistent with the \texttt{High $p_T$} ID, the muon properties obtained from the TuneP algorithm should be used.
 
 \subsubsection{Tracker High $p_T$ ID}
-The \texttt{trackerHighPt} ID is a customized muon ID and is modified from the \texttt{HighPt} ID, by loosening the global muon requirement to that for a tracker muon, namely removing the following two criteria in the above \texttt{HighPt} ID:
+The \texttt{Tracker High $p_T$} ID is a customized muon ID and is modified from the \texttt{High $p_T$} ID, by loosening the global muon requirement to that for a tracker muon, namely removing the following two criteria in the above \texttt{High $p_T$} ID:
 \begin{itemize}
 \item  The candidate is reconstructed as a Global Muon;
 \item  At least one muon-chamber hit included in the Global Muon track fit;
@@ -166,7 +167,7 @@ and replace them with the following criterion:
 \item  The candidate is reconstructed as a Tracker Muon 
 \end{itemize}
 
-The \texttt{trackerHighPt} ID is introduced into this analysis to optimize the muon efficiency. The \texttt{trackerHighPt} ID is designed for the identification of a single isolated high $p_T$ muon and would result in decreasing muon efficiency when the muon is from a boosted Z, where the two muons from the Z decay can be too adjacent with each other to be reconstructed as two separated stand-alone muons, in consideration of the limited spatial resolution in the muon detector system. More detail in the efficiency performance can be seen in Section~\ref{sec:muonselection}.
+The \texttt{Tracker High $p_T$} ID is introduced into this analysis to optimize the muon efficiency. The \texttt{Tracker High $p_T$} ID is designed for the identification of a single isolated high $p_T$ muon and would result in decreasing muon efficiency when the muon is from a boosted Z, where the two muons from the Z decay can be too adjacent with each other to be reconstructed as two separated stand-alone muons, in consideration of the limited spatial resolution in the muon detector system. More detail in the efficiency performance can be seen in Section~\ref{sec:muonselection}.
 
 \vspace{0.3cm}
 Due to the muon identification choices, in this analysis the muon momentum information used are always obtained from the TuneP algorithm.

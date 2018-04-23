@@ -167,7 +167,7 @@ and replace them with the following criterion:
 \item  The candidate is reconstructed as a Tracker Muon 
 \end{itemize}
 
-The \texttt{Tracker High $p_T$} ID is introduced into this analysis to optimize the muon efficiency. The \texttt{Tracker High $p_T$} ID is designed for the identification of a single isolated high $p_T$ muon and would result in decreasing muon efficiency when the muon is from a boosted Z, where the two muons from the Z decay can be too adjacent with each other to be reconstructed as two separated stand-alone muons, in consideration of the limited spatial resolution in the muon detector system. More detail in the efficiency performance can be seen in Section~\ref{sec:muonselection}.
+The \texttt{Tracker High $p_T$} ID is introduced into this analysis to optimize the muon efficiency. The standard \texttt{High $p_T$} ID is designed for the identification of a single isolated high $p_T$ muon and would result in decreasing muon efficiency when the muon is from a boosted Z, where the two muons from the Z decay can be too adjacent with each other to be reconstructed as two separated stand-alone muon tracks, in consideration of the limited spatial resolution in the muon detector system. Fortunately the introduction of the \texttt{Tracker High $p_T$} ID makes it possible to fully identify the 2 adjacent muons without requiring each of them to contain a stand-alone muon track. More detail in the efficiency performance can be seen in Section~\ref{sec:muonselection}.
 
 \vspace{0.3cm}
 Due to the muon identification choices, in this analysis the muon momentum information used are always obtained from the TuneP algorithm.
@@ -179,15 +179,15 @@ The muons in this analysis are required to be isolated, following the \texttt{lo
 The isolation requirment is $relIso_{tk}<0.1$ for each muon selected, where $relIso_{tk}$ is the relative tracker Iso and is defined as $relIso_{tk}=Iso_{tk}/p_{T}$.
 
 \section{Missing Transverse Momentum ($P_T ^{miss}$)}
-The Missing Transverse Momentum, denoted by $P_T ^{miss}$ or MET, is calculated as the negative vectorial sum of the momenta of all PF elements~\cite{ob_metconst},
+The Missing Transverse Momentum~\cite{ob_metconst}, denoted by $P_T ^{miss}$ or MET, is calculated as the negative vectorial sum of the momenta of all PF elements,
 \begin{equation}
-\vec{P_T ^miss} = -\Sigma_{i}^{PF} \vec{P_{T,i}}
+\vec{P_T ^{miss}} = -\Sigma_{i}^{PF} \vec{P_{T,i}}
 \label{eqn:ob_metdef}
 \end{equation}
 
 It often indicates the existence of undetected particles in the final state of an event, such as neutrinos. But it can also be mismeasured due to the non linearity of the calorimeter response for hadronic particles, tracker inefficiencies and minimum energy thresholds in the calorimeters. This bias can be reduced by applying jet energy corrections~\cite{ob_jetcorr} on the particle level reconstructed jet $P_T$. And thus the corrected missing transverse momentum can be obtained by equation~\ref{eqn:ob_metcorr}, where the superscript "corr" indicates the corrected values.
 \begin{equation}
-\vec{P_T ^{miss,corr}} = \vec{P_T ^{miss}} - \Sigma_{j}^{jets} (\vec{p_{T,j} ^corr} - \vec{p_{T,j}} )
+\vec{P_T ^{miss,corr}} = \vec{P_T ^{miss}} - \Sigma_{j}^{jets} (\vec{p_{T,j} ^{corr}} - \vec{p_{T,j}} )
 \label{eqn:ob_metcorr}
 \end{equation}
 

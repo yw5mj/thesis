@@ -1,11 +1,47 @@
 \section{Data and Triggers}
+\subsection{Data}
+This analysis uses a data sample recorded by the CMS detector during 2016 with an integrated luminosity of 35.9 fb$^{-1}$. The Primary Datasets (PD) used are listed in Table~\ref{tab:samples_data}. 
+\begin{table}[htbp]
+  \begin{center}
+    \caption{Datasets used in the analysis. \label{tab:samples_data}}
+    \begin{tabular}{c}
+      \hline\hline
+      Dataset   \\
+      \hline
+      \texttt{/PD/Run2016B-03Feb2017\_ver1-v1} \\ 
+      \texttt{/PD/Run2016B-03Feb2017\_ver2-v2}  \\
+      \texttt{/PD/Run2016C-03Feb2017-v1}  \\
+      \texttt{/PD/Run2016D-03Feb2017-v1}  \\
+      \texttt{/PD/Run2016E-03Feb2017-v1}  \\
+      \texttt{/PD/Run2016F-03Feb2017-v1}  \\
+      \texttt{/PD/Run2016G-03Feb2017v1}  \\
+      \texttt{/PD/Run2016H-03Feb2017\_ver2-v1}  \\
+      \texttt{/PD/Run2016H-03Feb2017\_ver3-v1}  \\
+      \hline
+      \textbf{Primary datasets (PD)}: \\
+      \texttt{SingleElectron, SingleMuon, SinglePhoton, and MuEG}\\ \hline
+      \hline\hline
+    \end{tabular}
+  \end{center}
+\end{table}
 
-\subsection{2016 Date}
-\subsubsection{Single Electron Data}
-\subsubsection{Single Muon Data}
 \subsection{High Level Triggers}
-\subsubsection{Single Electron Trigger}
-\subsubsection{Single Muon Trigger}
+The single lepton (electron or muon) $High\,Level$ triggers without pre-selections on isolation are required for the signal data selection, and single photon $High\,Level$ triggers for the $photon+jets$ event selection used in the data-driven Drell-Yan ($Z+jets$) background modeling. The detailed HLT paths are listed in Table~\ref{tab:triggerPaths}. 
+
+\begin{table}[htbp!]
+   \topcaption{Trigger paths used in 2016 collision data.
+   \label{tab:triggerPaths}}
+%\scriptsize
+   \centering
+   \begin{tabular}{ c }
+\hline\hline
+Muon  \\ \texttt{HLT\_Mu50\_v* OR HLT\_TkMu50\_v*}  \\ \hline
+Electron \\ \texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT\_v*} \\ \hline
+Photon \\ \texttt{HLT\_Photon``PT''\_R9Id90\_HE10\_IsoM\_v*},  for \texttt{PT} = 22,30,36,50,75,90,120,165 GeV \\  
+\hline
+\hline
+    \end{tabular}
+\end{table}
 
 \section{Standard Model Monte Carlo Samples}
 

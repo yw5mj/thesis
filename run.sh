@@ -12,7 +12,10 @@ fi
 mkdir -p output
 cp main.bbl $outputfile.bbl
 pdflatex -output-directory=output -jobname=$outputfile main.tex 
-pdflatex -output-directory=output -jobname=$outputfile main.tex >/dev/null
+if [ "$1" != "--test" ]
+then
+    pdflatex -output-directory=output -jobname=$outputfile main.tex >/dev/null
+fi
 rm $outputfile.bbl
 if [[ "$(hostname)" == *".cern.ch" ]]
 then

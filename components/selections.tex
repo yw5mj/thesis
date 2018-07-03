@@ -10,16 +10,16 @@ Both electrons in an selected electron pair are are required to pass the Egamma 
 \item Subleading Electron: $p_T >35 GeV$, $|\eta|<2.5$
 \end{enumerate}
 
-The restriction on their $|\eta|$ value is due to the design of the ECAL detector. And for the leading electron, only those with $p_T$ beyond 120 GeV will be kept, because of the single electron HLT we used (\texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT}) has a threshold at 115 GeV. More discussion can be found in Section~\ref{sec:bkg_trig}.
+The restriction on their $|\eta|$ value is due to the design of the ECAL detector. And for the leading electron, only those with $p_T$ beyond 120 GeV will be kept, because of the single electron HLT (\texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT}) we use has a threshold at 115 GeV. More discussion can be found in Section~\ref{sec:bkg_trig}.
 
 \subsubsection{Muon Pair Selection}\label{sec:muonselection}
 Two Muon Identifications are involved in the muon pair selection as described in Section~\ref{sec:ob_midiso}, to optimize the muon pair selection efficiency. Various combination of muon IDs are considered, and Figure~\ref{fig:sel_mumueff} shows the muon pair efficiencies for different muon ID combinations, versus $\Delta R$ between the two muons in the pair, and the $p_T$ of the muon pair.
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.5\linewidth]{figures/mudreff.png}
-\includegraphics[width=0.5\linewidth]{figures/muzpteff.png}
-\caption{Efficiency comparison among various muon ID combinations, versus $\Delta R$ between the muons and $p_T$ of the muon pair.}
+\includegraphics[width=0.9\linewidth]{figures/sel_mudreff.png}
+\includegraphics[width=0.9\linewidth]{figures/sel_muzpteff.png}
+\caption{Efficiency comparison among various muon ID combinations, versus $\Delta R$ between the muons (upper) and $p_T$ of the muon pair (lower).}
 \label{fig:sel_mumueff}
 \end{center}
 \end{figure}
@@ -66,7 +66,7 @@ To further suppress the background and improve the statistical significance of t
 Additionally, because in the signal model the two Z bosons come from the decay of a heavy resonance, and thus are mostly back to back, the variable $|\Delta \Phi (p_T ^Z ,p_T ^{miss})|$, which shows the angle difference in the XY plane between $p_T ^Z$ and $p_T ^{miss}$, is used to help seperating the signal and background, especailly $Z+jets$ events. The signal events tend to have large $|\Delta \Phi (p_T ^Z ,p_T ^{miss})|$ value, while for the $Z+jets$ events, $|\Delta \Phi (p_T ^Z ,p_T ^{miss})|$ should be generally flat, since the $p_T ^{miss}$ is instrumental and does not have a preferred direction with respect to the leptonic Z boson. Therefore, $|\Delta \Phi (p_T ^Z ,p_T ^{miss})|>0.5$ is applied in the signal region. 
 
 \vspace{0.3cm}
-To sum up, the selections of the signal region are shown as below:
+To sum up, the selection critieria in the signal region are shown as below:
 \begin{enumerate}
 \item Trigger: single muon and single electron triggers as documented in Section~\ref{sec:samples_hlt}
 \item Lepton ID and ISO:

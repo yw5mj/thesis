@@ -48,7 +48,7 @@ In the tag-and-probe method, a tag muon and a probe muon are selected from a eve
 The ID and Iso requirment ensures the tag muon to be a well defined muon. The \texttt{HLT_IsoMu24} is the un-prescaled HLT with lowest $p_T$ threshold in the SingleMuon dataset. Requiring the tag muon to pass this HLT assures that the selected event would be kept in the SingleMuon dataset so that the efficiencies to be masured from the probe muon would not be biased due to the dataset for selection. The $p_T > 26 GeV$ requirment is added to be consistent with the 24 GeV $p_T$ threshold in the HLT. A muon candidate would be considered as a probe if it satisfies the condition of the efficiency measurement. 
 
 \vspace{0.3cm}
-Due to a known issue with the tracker system existing during Run B to F caused by heavily ionizing particles (HIPs) and fixed later, some tracking inefficiency is observed. Though the effect on the muon reconstruction is minor, the data efficiency for muons are calculated separatedly for Run B to F and Run G to H. And an additional 1\% uncertainty is considered to cover the effect of the tracking inefficiency issue on the muon reconstruction.
+Due to a known issue with the tracker system existing during Run B to F caused by heavily ionizing particles (HIPs) and fixed later, some tracking inefficiency is observed. Though the effect on the muon reconstruction is minor, the data efficiency for muons are calculated separatedly for Run B to F and Run G to H. And an additional 1\% uncertainty is considered to cover the effect of the tracking inefficiency issue on the muon reconstruction. Considering 19.71 fb$^{-1}$ in run B to F and 16.15 fb$^{-1}$ in Run G to H, a flat random number between [0,1] is generated for each MC event, and if it is larger than $19.71/(19.71+16.15)=0.5496$ the scale factors calculated from the muon efficiency in Run B to F would be assigned to the event, otherwise the SFs from Run GH are assigned.
 
 \subsubsection{Muon ID Efficiency}
 In the ID efficiency measurement, any muon candidate from the object reconstruction with $p_T > 20GeV$ and $|\eta|<2.4$ (base muon selection in the analysis) could be considered as a probe muon. Spectrum sets of the invariant masss of the tag-probe muon pairs are calculated for various $p_T - \eta$ bins, with each set including a spectrum for those pairs with probe muon passing the ID, while another spectrum for pairs with probe muon failing the ID. The invariant mass spectrum consists of $Z\rightarrow \mu\mu$ process and other backgrounds. The $Z\rightarrow \mu\mu$ events are considered signal and the probe muon in these events are true muons. In this case, the efficiency would be $\epsilon=N_{signal}^{pass}/(N_{signal}^{pass}+N_{signal}^{fail})$. The spectrums are fit in a $signal+background$ pattern, and the integral of the signal shape is $N_{signal}^{pass}$ in the passing category and $N_{signal}^{fail}$ in the failing category for each bin. 
@@ -133,6 +133,34 @@ The electron \texttt{Loose} ID (including PF ISO) efficiency and scale factors a
 \subsection{Trigger Efficiency}\label{sec:bkg_trig}
 The HLT is designed serving the purpose of fast decision making on data taking, and therefore the reconstruction of objects' properties on the HLT level are not precise enough compared to the offline reconstruction. Trigger efficiency study is important to physics analyses in two aspects: to suppress the trigger efficiency effect on the data by optimizing data selection; and to compensate the discrepancy in terms of trigger efficiency between data and simulation samples by applying trigger efficiency SFs to MC samples.
 \subsubsection{SingleMuon HLT Efficiency}
+For the muon channel selection, A event are required to pass the single muon HLT of either \texttt{HLT\_Mu50} or \texttt{HLT\_TkMu50}. The combined trigger efficiencies and SFs are centrally derived by the Muon POG, measured with the tag-and-probe method. The results are shown in Figure~\ref{fig:bg_trgeff_mu_dt}, \ref{fig:bg_trgeff_mu_mc}, and \ref{bg_fig:trgeff_mu_sf}.
+
+\begin{figure}[htpb]
+\begin{center}
+\includegraphics[width=0.49\linewidth, page=1]{fig/muon_trg_summer16.pdf}
+\includegraphics[width=0.49\linewidth, page=3]{fig/muon_trg_summer16.pdf}
+\caption{Muon trigger efficiency from 2016 ReReco dataset as a function of reconstructed muon $p_T$ and $\eta$, for 2016 B-F (left) and 2016 GH (right). }
+\label{fig:bg_trgeff_mu_dt}
+\end{center}
+\end{figure}
+
+\begin{figure}[htpb]
+\begin{center}
+\includegraphics[width=0.49\linewidth, page=5]{fig/muon_trg_summer16.pdf}
+\includegraphics[width=0.49\linewidth, page=7]{fig/muon_trg_summer16.pdf}
+\caption{Muon trigger efficiency from  RunIISummer16 MC as a function of reconstructed muon $p_T$ and $\eta$,for 2016 B-F (left) and 2016 GH (right). }
+\label{fig:bg_trgeff_mu_mc}
+\end{center}
+\end{figure}
+
+\begin{figure}[htpb]
+\begin{center}
+\includegraphics[width=0.49\linewidth, page=9]{fig/muon_trg_summer16.pdf}
+\includegraphics[width=0.49\linewidth, page=11]{fig/muon_trg_summer16.pdf}
+\caption{Electron trigger efficiency Data/MC scale factors  as a function of reconstructed muon \pt and $\eta$, for 2016 B-F (left) and 2016 GH (right). }
+\label{fig:bg_trgeff_mu_sf}
+\end{center}
+\end{figure}
 
 \subsubsection{SingleElectron HLT Efficiency}
 The SingleElectron HLT (\texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT}) is measured for data and MC using the tag-and-probe method. Events are selected from SingleElectron dataset for data and DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8 dataset for MC with pileup reweight. The "tag" criteria are:

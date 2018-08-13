@@ -1,4 +1,4 @@
-The background modeling are strategies used to model the backgrounds that matches the data distribution in the control region. The main sources of SM background in this analysis can be divided into 3 groups:
+miThe background modeling are strategies used to model the backgrounds that matches the data distribution in the control region. The main sources of SM background in this analysis can be divided into 3 groups:
 \begin{enumerate}
 \item Zjets events: Zjets process is the dominating background source for this search, with $\ell$ in the final state from the Z decay. ${p_{T}}^{miss}$ is only instrumental.
 \item Non-resonant events: Events that have $\ell$ and ${p_{T}}^{miss}$ in the final state, but $\ell$ pair does not come from the decay of a resonance. $t\bar{t}$ and $WW$ processes are the main sources of the non-resonant background
@@ -359,7 +359,7 @@ For the purpose of physical ${p_{T}}^{miss}$ subtraction from the single photon 
 In theory, the kinematic signature of the $\gamma$jets events is expected to be similar to Zjets events, especially when it comes to high energy region where the mass of Z bosons can be neglected. But it cannot be taken for granted in experiment, where detector effects exist, and more importantly, the lepton selectoins for the Z boson reconstruction in this analysis cannot be repeated on the photons. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
 
 \vspace{0.3cm}
-The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8, with inclusive cross-section of 5765.4 pb ($\pm 1.7\%$ PDF uncertainty) calculated at NNLO, and differential cross-section reweighted to that measured from the 2015 CMS data~\cite{bg_2015zjetxsec} on the generator level. The standard preselection is applied to the MC samples, with all efficiency reweightings applied. Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu} shows the photon $p_T$ reweighting function for electron channel and muon channel separately. 
+The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8, with inclusive cross-section of 5765.4 pb ($\pm 1.7\%$ PDF uncertainty) calculated at NNLO from FEWZ 3.1~\cite{bg_fewz}, and differential cross-section reweighted to that measured from the 2015 CMS data~\cite{bg_2015zjetxsec} on the generator level. The standard preselection is applied to the MC samples, with all efficiency reweightings applied. Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu} shows the photon $p_T$ reweighting function for electron channel and muon channel separately. 
 
 \begin{figure}[htbp]
 \centering
@@ -378,23 +378,23 @@ The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-
 \end{figure}
 
 \subsection{Photon Mass Generation}
-Considering the mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}\ref{eqn:intro_MTalt}), it is crucial for the photons in the $\gamma$jets events to have "mass". This is done by a simple random number generation. The Z boson mass distribution is modeled as a function of Z boson $p_T$. A 2D histogram regarding the mass and $p_T$ of the Z bosons is made. Then a mass is randomely generated corresponding to the mass distribution and assigned to a given photon, with its $p_T$ value considered.
+Considering the mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}\ref{eqn:intro_MTalt}), it is crucial for the photons in the $\gamma$jets events to have "mass". This is done by a simple random number generation. The Z boson mass distribution is modeled as a function of Z boson $p_T$. A 2D histogram regarding the mass and $p_T$ of the simulated Z bosons is made. Then a mass is randomely generated corresponding to the mass distribution and assigned to a given photon, with its $p_T$ value considered.
 
 \vspace{0.3cm}
 Figure~\ref{fig:mz_el_zjets_gjets} and \ref{fig:mz_mu_zjets_gjets}, compare the Z mass distributions of Zjets MC and the simulated Z mass for $\gamma$jets data events, for electron and muon channels separately.
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=0.46\linewidth,page=8]{figures/MC2_Rc36p46DtReCalib_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_metfilter_el_log_1pb.pdf}
-\includegraphics[width=0.46\linewidth,page=8]{figures/GJets2_BkgSub_Rc36p46DtReCalib_NonReso_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_muoneg_gjet_metfilter_el_log_1pb.pdf}
+\includegraphics[width=0.46\linewidth]{figures/MC2_Rc36p46DtReCalib_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_metfilter_el_log_1pb.pdf}
+\includegraphics[width=0.46\linewidth]{figures/GJets2_BkgSub_Rc36p46DtReCalib_NonReso_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_muoneg_gjet_metfilter_el_log_1pb.pdf}
 \caption{Z mass distributions for electron channel, comparing Zjets MC (left) and the simulated Z mass for $\gamma$jets data events (right).}
 \label{fig:mz_el_zjets_gjets}
 \end{figure}
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=0.46\linewidth,page=8]{figures/MC2_Rc36p46DtReCalib_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_metfilter_mu_log_1pb.pdf}
-\includegraphics[width=0.46\linewidth,page=8]{figures/GJets2_BkgSub_Rc36p46DtReCalib_NonReso_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_muoneg_gjet_metfilter_mu_log_1pb.pdf}
+\includegraphics[width=0.46\linewidth]{figures/MC2_Rc36p46DtReCalib_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_metfilter_mu_log_1pb.pdf}
+\includegraphics[width=0.46\linewidth]{figures/GJets2_BkgSub_Rc36p46DtReCalib_NonReso_RhoWt_GMCEtaWt_tightzpt50_puWeightmoriondMC_muoneg_gjet_metfilter_mu_log_1pb.pdf}
 \caption{Z mass distributions for muon channel, comparing Zjets MC (left) and the simulated Z mass for $\gamma$jets data events (right).}
 \label{fig:mz_mu_zjets_gjets}
 \end{figure}
@@ -465,7 +465,7 @@ In this analysis the non-resonance background containing mostly $t\bar{t}$ and W
 A data driven method is used in the analysis for the non-resonance background modeling. The method is to use the $e\mu$ pairs to describe the non-resonance background in ll (ee or $\mu \mu$) event, based on the fact that as for the non-resonance background, $e\mu$ pairs are supposed to have the same kinematic behavior and similar cross-section as ll (ee or $\mu \mu$) does.
 
 \subsection{$e\mu$ Pair Selection}
-The 35.8 fb$^-1$ 2016 MuonEG dataset is used for the $e\mu$ pair selection.  Events with one $e\mu$ pair or more (no HLT requirement) are selected. If more than 1 $e\mu$ pair exit in one event, the pair with invariant mass closest to Z mass is selected (analogy to the data selection). Electrons are required to pass Loose ID with pfIso, and muons are required to pass High $p_T$ ID and tracker isolation. 
+The 35.8 fb$^{-1}$ 2016 MuonEG dataset is used for the $e\mu$ pair selection.  Events with one $e\mu$ pair or more (no HLT requirement) are selected. If more than 1 $e\mu$ pair exit in one event, the pair with invariant mass closest to Z mass is selected (analogy to the data selection). Electrons are required to pass Loose ID with pfIso, and muons are required to pass High $p_T$ ID and tracker isolation. 
 
 \vspace{0.3cm}
 When the $e\mu$ sample is used as background in the electron channel, selections below are applied (analogy to the electron selection in data: 
@@ -668,7 +668,7 @@ The resonant background in this analysis contains mainly SM $qq\rightarrow ZZ\ri
 \vspace{0.3cm}
 The NNLO/NLO QCD correction is parametrized and applied as a function of M(ZZ) 
 at generator level. 
-The correction and the uncertainty band are shown on Fig.~\ref{fig:qqzz_nnlo_qcd}.
+The correction and the uncertainty band are shown on Figure~\ref{fig:qqzz_nnlo_qcd}.
 The average NNLO/NLO QCD correction k-factor is 1.11 with an uncertainty of 3\%.
 For generator level M(ZZ)~$>$~500~GeV, the average k-factor and uncertainty are applied. 
 
@@ -709,7 +709,7 @@ $i$th quark/$Z$ boson after the Lorentz boost.
 
 \vspace{0.3cm}
 The average k-factor for NLO/LO EW correction is 0.95 with an uncertainty of 3~\%. 
-The correction function and the uncertainty band is shown on Fig.~\ref{fig:qqzz_nlo_ew}
+The correction function and the uncertainty band is shown on Figure~\ref{fig:qqzz_nlo_ew}
 as a function of generator level $m_{ZZ}$. 
 The NLO/LO EW correction is only appropriate for on-shell Z with $m_{ZZ}>2 m_{Z}$. 
 

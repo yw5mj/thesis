@@ -6,13 +6,13 @@ miThe background modeling are strategies used to model the backgrounds that matc
 \end{enumerate}
 
 \vspace{0.3cm}
-The background modeling starts from tuning the MC simulation samples. MC simulation is widely used in this analysis. The modeling of the resonant background and the signal completely rely on MC simulation. Though the modeling of the Zjet and non-resonant background are done by data-driven methods, simulation samples are also used in the process. Various weights are asigned to the MC events to compensate the discrepancies between the simulation settings and the actual experiment, in terms of pileup, HLT and lepton ID/Iso. Then the detail of the background strategies for the 3 background groups are discussed.
+The background modeling starts from tuning the MC simulation samples. MC simulation is widely used in this analysis. The modeling of the resonant background and the signal completely rely on MC simulation. Though the modeling of the Zjet and non-resonant background are done by data-driven methods, simulation samples are also used in the process. Various weights are assigned to the MC events to compensate the discrepancies between the simulation settings and the actual experiment, in terms of pileup, HLT and lepton ID/Iso. Then the detail of the background strategies for the 3 background groups are discussed.
 
 \section{Pileup re-weighting}
 The number of pileup interactions is directly related to the contamination in an event, and can affect the quality of the event reconstruction, such as the value of ${p_{T}}^{miss}$ and lepton isolations. For the MC events, a random number of pileups are added during their production, which does not necessarily agree with the pileup distribution in the data. To align the distribution of pileup numbers between data and simulation, pileup re-weighting is applied to the MC samples. 
 
 \vspace{0.3cm}
-Considering the reconstruction efficiencies of the vertices might differ between MC and data, a safe way is to reweight based on the distribution of the number of actual pileup interactions (true pileup), rather than observed interactions. And the value of the weight assigned to the MC events would be obtained from the ratio of true data pileup profile and true MC pileup profil. The true MC pileup profile can be found in the configuration of the RunIISummer16 MC production. The true data pileup profile can be calculated based on the instantaneous luminosity for each bunch crossing noted in the CMS pileup JSON file, and the recommended Mini-Bias cross-section of $69.2 mb \pm 4.6\%$ evaluated by the CMS luminosity POG.
+Considering the reconstruction efficiencies of the vertices might differ between MC and data, a safe way is to reweight based on the distribution of the number of actual pileup interactions (true pileup), rather than observed interactions. And the value of the weight assigned to the MC events would be obtained from the ratio of true data pileup profile and true MC pileup profile. The true MC pileup profile can be found in the configuration of the RunIISummer16 MC production. The true data pileup profile can be calculated based on the instantaneous luminosity for each bunch crossing noted in the CMS pileup JSON file, and the recommended Mini-Bias cross-section of $69.2 mb \pm 4.6\%$ evaluated by the CMS luminosity POG.
 
 \vspace{0.3cm}
 Figure~\ref{fig:bg_pileup} shows the distribution of the true pileup number for both data and MC, as well as their ratio. The pileup reweighting value for each event in the MC samples are obtained from the ratio plot based on the true pileup number in that event.
@@ -36,22 +36,22 @@ P(HLT\cdot ID\cdot Iso) & = P(HLT|ID\cdot Iso)\times P(ID\cdot Iso) \\
 where $P(HLT\cdot ID\cdot Iso)$ denotes the efficiency of a lepton passing HLT, ID and Iso; $P(HLT|ID\cdot Iso)$ is the efficiency of a lepton passing HLT under the condition of it passing ID and ISO, and is also referred to as trigger efficiency; $P(ID\cdot Iso)$ is the ID/Iso efficiency; $P(Iso|ID)$ is the efficiency of a lepton passing Iso under the condition that it passes ID, and it is also referred to as the Iso efficiency; $P(ID)$ is the ID efficiency. The efficiencies are all calculated using a Tag-and-Probe method in this analysis, as discussed below. 
 
 \subsection{Muon ID/Iso Efficiency}
-The ID/Iso efficiencies may differ between MC and data due to detector effect. Therefore efficiencies are measured and scale factors (SF) are calculated for the MC samples to counter this effect. The Muon High $p_T$ ID, Tracker High $p_T$ ID and the Tracker Isolation efficiencies are measured separatedly using the tag-and-probe method described as below. Events are selected from the SingleMuon dataset for data and DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8 dataset for MC with pileup reweight. 
+The ID/Iso efficiencies may differ between MC and data due to detector effect. Therefore efficiencies are measured and scale factors (SF) are calculated for the MC samples to counter this effect. The Muon High $p_T$ ID, Tracker High $p_T$ ID and the Tracker Isolation efficiencies are measured separately using the tag-and-probe method described as below. Events are selected from the SingleMuon dataset for data and DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-madgraphMLM-pythia8 dataset for MC with pileup reweight. 
 
 \vspace{0.3cm}
 In the tag-and-probe method, a tag muon and a probe muon are selected from a event. The tag muon is a muon known as well-defined, which helps eliminate bias and calculate efficiency, and the probe muon is the muon candidate from which the efficiency is studied. A event is kept only if two muons are found with one passing the "tag" criteria while the other passing the "probe" criteria. For the muon ID/Iso efficiency measurement, the tag criteria are:
 \begin{enumerate}
-\item passing the \texttt{tight} Muon ID and the $relIso<0.2$ Iso requirment recommended by CMS Muon POG
+\item passing the \texttt{tight} Muon ID and the $relIso<0.2$ Iso requirement recommended by CMS Muon POG
 \item passing \texttt{HLT\_IsoMu24} and $p_T > 26 GeV$
 \end{enumerate}
 
-The ID and Iso requirment ensures the tag muon to be a well defined muon. The \texttt{HLT\_IsoMu24} is the un-prescaled HLT with lowest $p_T$ threshold in the SingleMuon dataset. Requiring the tag muon to pass this HLT assures that the selected event would be kept in the SingleMuon dataset so that the efficiencies to be masured from the probe muon would not be biased due to the dataset for selection. The $p_T > 26 GeV$ requirment is added to be consistent with the 24 GeV $p_T$ threshold in the HLT. A muon candidate would be considered as a probe if it satisfies the condition of the efficiency measurement. 
+The ID and Iso requirement ensures the tag muon to be a well defined muon. The \texttt{HLT\_IsoMu24} is the un-prescaled HLT with lowest $p_T$ threshold in the SingleMuon dataset. Requiring the tag muon to pass this HLT assures that the selected event would be kept in the SingleMuon dataset so that the efficiencies to be measured from the probe muon would not be biased due to the dataset for selection. The $p_T > 26 GeV$ requirement is added to be consistent with the 24 GeV $p_T$ threshold in the HLT. A muon candidate would be considered as a probe if it satisfies the condition of the efficiency measurement. 
 
 \vspace{0.3cm}
-Due to a known issue with the tracker system existing during Run B to F caused by heavily ionizing particles (HIPs) and fixed later, some tracking inefficiency is observed. Though the effect on the muon reconstruction is minor, the data efficiency for muons are calculated separatedly for Run B to F and Run G to H. And an additional 1\% uncertainty is considered to cover the effect of the tracking inefficiency issue on the muon reconstruction. Considering 19.71 fb$^{-1}$ in run B to F and 16.15 fb$^{-1}$ in Run G to H, a flat random number between [0,1] is generated for each MC event, and if it is larger than $19.71 fb^{-1}/(19.71 fb^{-1}+16.15 fb^{-1})=0.5496$ the scale factors calculated from the muon efficiency in Run B to F would be assigned to the event, otherwise the SFs from Run GH are assigned.
+Due to a known issue with the tracker system existing during Run B to F caused by heavily ionizing particles (HIPs) and fixed later, some tracking inefficiency is observed. Though the effect on the muon reconstruction is minor, the data efficiency for muons are calculated separately for Run B to F and Run G to H. And an additional 1\% uncertainty is considered to cover the effect of the tracking inefficiency issue on the muon reconstruction. Considering 19.71 fb$^{-1}$ in run B to F and 16.15 fb$^{-1}$ in Run G to H, a flat random number between [0,1] is generated for each MC event, and if it is larger than $19.71 fb^{-1}/(19.71 fb^{-1}+16.15 fb^{-1})=0.5496$ the scale factors calculated from the muon efficiency in Run B to F would be assigned to the event, otherwise the SFs from Run GH are assigned.
 
 \subsubsection{Muon ID Efficiency}
-In the ID efficiency measurement, any muon candidate from the object reconstruction with $p_T > 20GeV$ and $|\eta|<2.4$ (base muon selection in the analysis) could be considered as a probe muon. Spectrum sets of the invariant masss of the tag-probe muon pairs are calculated for various $p_T - \eta$ bins, with each set including a spectrum for those pairs with probe muon passing the ID, while another spectrum for pairs with probe muon failing the ID. The invariant mass spectrum consists of $Z\rightarrow \mu\mu$ process and other backgrounds. The $Z\rightarrow \mu\mu$ events are considered signal and the probe muon in these events are true muons. In this case, the efficiency would be 
+In the ID efficiency measurement, any muon candidate from the object reconstruction with $p_T > 20GeV$ and $|\eta|<2.4$ (base muon selection in the analysis) could be considered as a probe muon. Spectrum sets of the invariant masses of the tag-probe muon pairs are calculated for various $p_T - \eta$ bins, with each set including a spectrum for those pairs with probe muon passing the ID, while another spectrum for pairs with probe muon failing the ID. The invariant mass spectrum consists of $Z\rightarrow \mu\mu$ process and other backgrounds. The $Z\rightarrow \mu\mu$ events are considered signal and the probe muon in these events are true muons. In this case, the efficiency would be 
 \begin{equation}
 \epsilon=N_{signal}^{pass}/(N_{signal}^{pass}+N_{signal}^{fail}). 
 \end{equation}
@@ -107,7 +107,7 @@ SF & =\epsilon^{data}/\epsilon^{MC} \\
 \end{small}
 
 \subsubsection{Muon Iso Efficiency}
-The muon tracker isolation efficiency is also measured using the tag-and-probe method, with an additional requirment on the probe muon to pass the tracker High $p_T$ ID. As the tracker isolation selection applies to both muons, the ratio between the efficiencies of data and MC is calculated as the scale factor of the isolation. The SF values versus $p_T - \eta$ are show in Figure~\ref{fig:bg_muonisosf}
+The muon tracker isolation efficiency is also measured using the tag-and-probe method, with an additional requirement on the probe muon to pass the tracker High $p_T$ ID. As the tracker isolation selection applies to both muons, the ratio between the efficiencies of data and MC is calculated as the scale factor of the isolation. The SF values versus $p_T - \eta$ are show in Figure~\ref{fig:bg_muonisosf}
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.49\linewidth, page=7]{figures/bg_muonidisoeff.pdf}
@@ -153,10 +153,10 @@ For the muon channel selection, A event are required to pass the single muon HLT
 \end{figure}
 
 \vspace{0.3cm}
-The efficiency results are delivered in the form of $p_T - \eta$ 2D histograms. The calculated ratio of effiicencies between data and MC are applied on the leading muons of the pair in the MC events only as the trigger efficiency scale factor, considering very negligible number of events in either data or MC are seen with the subleading muon passing the HLT while leading muon failing.
+The efficiency results are delivered in the form of $p_T - \eta$ 2D histograms. The calculated ratio of efficencies between data and MC are applied on the leading muons of the pair in the MC events only as the trigger efficiency scale factor, considering very negligible number of events in either data or MC are seen with the subleading muon passing the HLT while leading muon failing.
 
 \subsubsection{SingleElectron HLT Efficiency}
-The SingleElectron HLT (\texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT}) is measured for data and MC using the tag-and-probe method. Events are selected from SingleElectron dataset for data and DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8 dataset for MC with pileup reweight. The "tag" criteria are:
+The SingleElectron HLT (\texttt{HLT\_Ele115\_CaloIdVT\_GsfTrkIdT}) is measured for data and MC using the tag-and-probe method. Events are selected from SingleElectron dataset for data and DYJetsToLL\_M-50\_ TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8 dataset for MC with pileup reweight. The "tag" criteria are:
 \begin{enumerate}
 \item passing the \texttt{tight} cut-based identification (ID) and isolation (Iso) recommended by the EGamma POG %shown in Table~\ref{tab:electron-tightid}
 \item passing \texttt{HLT\_Ele27\_WPTight\_Gsf} with $p_T>30$ and $|\eta|<2.1$
@@ -197,7 +197,7 @@ The electron trigger efficiencies are measured as a function electron reconstruc
 \end{figure}
 
 \vspace{0.3cm}
-The measured efficiencies are shown in Figure ~\ref{fig:trgeff_el_dt} and Figure~\ref{fig:trgeff_el_mc} for data and MC respectively. The corresponding Data/MC scale factors are shown in Figure~\ref{fig:trgeff_el_sf}. Simular to the muon channel, the SingleElectron HLT efficiency SF is applied on the leading electron in the MC samples as reweighting factors to model the electron trigger efficiency, and $p_T > 120GeV$ selection is added to the leading electron.
+The measured efficiencies are shown in Figure ~\ref{fig:trgeff_el_dt} and Figure~\ref{fig:trgeff_el_mc} for data and MC respectively. The corresponding Data/MC scale factors are shown in Figure~\ref{fig:trgeff_el_sf}. Similar to the muon channel, the SingleElectron HLT efficiency SF is applied on the leading electron in the MC samples as reweighting factors to model the electron trigger efficiency, and $p_T > 120GeV$ selection is added to the leading electron.
 
 \begin{figure}[htpb]
 \begin{center}
@@ -297,7 +297,7 @@ Considering only photon with $p_T$ beyond 50 GeV would be selected, the L1T pres
 \end{figure}
 
 \subsection{Physical ${p_{T}}^{miss}$ Subtraction}
-To better describe the kinematics of the $\gamma$jets events, events with physical ${p_{T}}^{miss}$ are expected to be subtracted from the SinglePhoton dataset. MC samples shown in Table~\ref{tab:bg_photonMC} are used to describe the single photon dataset. Figure~\ref{fig:pho_pteta}, \ref{fig:pho_met}, and \ref{fig:pho_metpara} shows the SinglePhoton data and MC agreement for 2016 full dataset. The SinglePhoton HLT set discussed above has been applied on both MC and data, and the HLT prescale reweighting applies too. A simple cutting-and-countting photon trigger efficiency is performed and the ratios between data and MC are applied as HLT efficiency SF on the MC samples. Nice agreement between the SinglePhoton data and MC is observed.
+To better describe the kinematics of the $\gamma$jets events, events with physical ${p_{T}}^{miss}$ are expected to be subtracted from the SinglePhoton dataset. MC samples shown in Table~\ref{tab:bg_photonMC} are used to describe the single photon dataset. Figure~\ref{fig:pho_pteta}, \ref{fig:pho_met}, and \ref{fig:pho_metpara} shows the SinglePhoton data and MC agreement for 2016 full dataset. The SinglePhoton HLT set discussed above has been applied on both MC and data, and the HLT prescale reweighting applies too. A simple cutting-and-counting photon trigger efficiency is performed and the ratios between data and MC are applied as HLT efficiency SF on the MC samples. Nice agreement between the SinglePhoton data and MC is observed.
 
 \begin{table}[htbh]
   \begin{center}
@@ -362,7 +362,7 @@ To better describe the kinematics of the $\gamma$jets events, events with physic
 For the purpose of physical ${p_{T}}^{miss}$ subtraction from the single photon data, the physical ${p_{T}}^{miss}$ MC samples are used together with the SinglePhoton dataset, but with a scale factor of $-1$.
 
 \subsection{Photon $p_T$ to Z $p_T$ Reweighting}
-In theory, the kinematic signature of the $\gamma$jets events is expected to be similar to Zjets events, especially when it comes to high energy region where the mass of Z bosons can be neglected. But it cannot be taken for granted in experiment, where detector effects exist, and more importantly, the lepton selectoins for the Z boson reconstruction in this analysis cannot be repeated on the photons. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
+In theory, the kinematic signature of the $\gamma$jets events is expected to be similar to Zjets events, especially when it comes to high energy region where the mass of Z bosons can be neglected. But it cannot be taken for granted in experiment, where detector effects exist, and more importantly, the lepton selections for the Z boson reconstruction in this analysis cannot be repeated on the photons. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
 
 \vspace{0.3cm}
 The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8, with inclusive cross-section of 5765.4 pb ($\pm 1.7\%$ PDF uncertainty) calculated at NNLO from FEWZ 3.1~\cite{bg_fewz}, and differential cross-section reweighted to that measured from the 2015 CMS data~\cite{bg_2015zjetxsec} on the generator level. The standard preselection is applied to the MC samples, with all efficiency reweightings applied. Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu} shows the photon $p_T$ reweighting function for electron channel and muon channel separately. 
@@ -384,7 +384,7 @@ The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-
 \end{figure}
 
 \subsection{Photon Mass Generation}
-Considering the mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}\ref{eqn:intro_MTalt}), it is crucial for the photons in the $\gamma$jets events to have "mass". This is done by a simple random number generation. The Z boson mass distribution is modeled as a function of Z boson $p_T$. A 2D histogram regarding the mass and $p_T$ of the simulated Z bosons is made. Then a mass is randomely generated corresponding to the mass distribution and assigned to a given photon, with its $p_T$ value considered.
+Considering the mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}\ref{eqn:intro_MTalt}), it is crucial for the photons in the $\gamma$jets events to have "mass". This is done by a simple random number generation. The Z boson mass distribution is modeled as a function of Z boson $p_T$. A 2D histogram regarding the mass and $p_T$ of the simulated Z bosons is made. Then a mass is randomly generated corresponding to the mass distribution and assigned to a given photon, with its $p_T$ value considered.
 
 \vspace{0.3cm}
 Figure~\ref{fig:mz_el_zjets_gjets} and \ref{fig:mz_mu_zjets_gjets}, compare the Z mass distributions of Zjets MC and the simulated Z mass for $\gamma$jets data events, for electron and muon channels separately.
@@ -487,7 +487,7 @@ When the sample is used in the muon channel, selections are (analogy to the muon
 \end{itemize}
 
 \subsection{$e\mu$ Pair Event-based Reweighting}
-Based on the assuption that electrons and muons have the same behavior in the non-resonant background, the kinematic variables' distributions of the electron and muon in the $e\mu$ pair are expected to be identical. However it is not exactly true. Figure~\ref{fig:nonresmuelpt} shows the $p_T$ distribution of electron and muon, and their ratio in the MuonEG dataset.
+Based on the assumption that electrons and muons have the same behavior in the non-resonant background, the kinematic variables' distributions of the electron and muon in the $e\mu$ pair are expected to be identical. However it is not exactly true. Figure~\ref{fig:nonresmuelpt} shows the $p_T$ distribution of electron and muon, and their ratio in the MuonEG dataset.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -528,12 +528,12 @@ The agreement between the $p_T$ distributions of electrons and muons are improve
 As HLT is required in our $\ell \ell$ data selection, while no such HLT for the $e\mu$ sample, data trigger efficiency is calculated and applied in the $e\mu$ sample to simulate the single lepton HLT. With the event based reweighting described above, the electrons and muons in the $e\mu$ pair sample behave very similarly and can be regarded as $\ell \ell$ pairs. Both SingleElectron and SingleMuon trigger efficiency for data are calculated for each event in the $e\mu$ pair data, corresponding to the leading lepton's $p_T$ and $\eta$, regardless whether the leading lepton is a muon or an electron. The trigger efficiency for data is described in Section~\ref{sec:bkg_trig}. The SingleElectron trigger efficiency is applied when the sample is used in the electron channel, similarly the SingleMuon trigger efficiency is applied when the sample is used in the muon channel. The uncertainty of the trigger efficiency is evaluated and quoted as the mean deviation (in percent) among all the selected events of each channel (see Table~\ref{tab:nonresuncert}).
 
 \vspace{0.3cm}
-When applying the SingleLepton trigger efficiency on the MuonEG dataset to emulate the data HLT, the MuonEG dataset is expected to have full acceptance in our preselection region. This explains why no HLT is required in the MuonEG data selection process. By not requiring any MuonEG HLT, events passing any MuonEG HLTs are accepted. Considering the high $p_T$ threshold in the lepton selection, the acceptance of the dataset is high enough and this effect can be ignored compared to the single lepton trigger efficiency uncertainty. In fact, the acceptance of the MuonEG dataset has negligible effects as long as it is consistent in our preselection region, as the $e\mu$ sample would be rescaled as discussed below. To clarify, the $p_T$ thresholds of the MuonEG dataset would not affact our event selection. For the muon channel, we have leading lepton $pt>60 GeV$, and subleading lepton $pt>20 GeV$. And the electron channel has higher lepton $p_T$ selection. The MuonEG dataset contains non-prescaled triggers:
+When applying the SingleLepton trigger efficiency on the MuonEG dataset to emulate the data HLT, the MuonEG dataset is expected to have full acceptance in our preselection region. This explains why no HLT is required in the MuonEG data selection process. By not requiring any MuonEG HLT, events passing any MuonEG HLTs are accepted. Considering the high $p_T$ threshold in the lepton selection, the acceptance of the dataset is high enough and this effect can be ignored compared to the single lepton trigger efficiency uncertainty. In fact, the acceptance of the MuonEG dataset has negligible effects as long as it is consistent in our preselection region, as the $e\mu$ sample would be rescaled as discussed below. To clarify, the $p_T$ thresholds of the MuonEG dataset would not affect our event selection. For the muon channel, we have leading lepton $pt>60 GeV$, and subleading lepton $pt>20 GeV$. And the electron channel has higher lepton $p_T$ selection. The MuonEG dataset contains non-prescaled triggers:
 \begin{itemize}
 \item \texttt{HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL(\_DZ)} 
 \item \texttt{HLT\_Mu12\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL(\_DZ)}
 \end{itemize}
-and these $p_T$ threshold is much lower than our $p_T$ selecton.
+and these $p_T$ threshold is much lower than our $p_T$ selection.
 
 \subsection{$e\mu$ Events Rescaling}
 To rescale the $e\mu$ samples to fit the nonresonance background and study the agreement of the background sample and data, a nonresonant control region is defined. The scale factor is calculated by equation~\ref{eq:nonresscale}.
@@ -546,7 +546,7 @@ The $N_{data,ll}$ is the number of data events in the control region; $N_{MC,res
   \sigma_{Scale}  = \sqrt{\frac{\sigma^{2}_{N_{data,ll}}+\sigma^{2}_{N_{MC,reson}}}{(N_{data,ll}-N_{MC,reson})^{2}}+\frac{\sigma^{2}_{N_{data,e\mu}}}{N^{2}_{data,e\mu}}}\times \frac{N_{data,ll}-N_{MC,reson}}{N_{data,e\mu}}
 \end{equation}
 
-Here the statistic uncertanity is considered for both MC and data, and the PDF uncertainty is considered for resonant MC (1.5\%).
+Here the statistic uncertainty is considered for both MC and data, and the PDF uncertainty is considered for resonant MC (1.5\%).
 
 \vspace{0.3cm}
 To suppress scale deviation and resonance background in the CR, selections below are applied: 
@@ -609,7 +609,7 @@ Electron channel plots in the control region are shown in the Figure~\ref{fig:no
 \end{figure}
 
 \vspace{0.3cm}
-The control region plots shows that resonance background is heavily suppressed in the CR and data driven non-resonance background agrees well with the data. Also NonReson $e\mu$ should have similar cross section with NonReson to ll, which means that the sum of the scale in electron channel and the scale in muon channel should be close to 1, and from Table~\ref{tab:nonressfdev} we see that at X=60, Scale(ee channel)=0.346, Scale($\mu\mu$ channel)=0.687, adding up to 1.033, which agrees with the prediction.
+The control region plots shows that resonance background is heavily suppressed in the CR and data driven non-resonance background agrees well with the data. Also nonresonance $e\mu$ events should have similar cross section with those in ll events, which means that the sum of the scale in electron channel and the scale in muon channel should be close to 1, and from Table~\ref{tab:nonressfdev} we see that at X=60, Scale(ee channel)=0.346, Scale($\mu\mu$ channel)=0.687, adding up to 1.033, which agrees with the prediction.
 
 \subsection{Comparing to MC Modeling}
 Figure~\ref{fig:nonreselzmasscr100} is a comparison of the nonresonant background modeled by data-driven method and the $t\bar{t}+WW$ MC samples as a cross-check of the data-driven method, with $70GeV<M_{Z}<110GeV$ selection, ${p_{T}}^{miss}>50GeV$ and $p_{T}^{Z}>100GeV$ selection (standard signal region selections in this analysis), for electron channel. And similarly Figure~\ref{fig:nonresmuzmasscr100} is for muon region. The data-driven modeling method generally gives a very similar non-resonant background distribution as the MC. However, in the electron channel the yield of the data-driven method is slightly higher than the MC modeling.

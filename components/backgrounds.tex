@@ -274,7 +274,7 @@ This is to filter out processes such as $Z\to ee$ events, with one electron mis-
 
 In addition, analogous to the Z boson preselection, $p_T ^{\gamma} > 50GeV$ is applied in the photon data selection.
 
-\subsection{$\gamma$jets HLT Prescale Reweighting}
+\subsection{$\gamma$jets HLT Prescale Reweighting}\label{sec:bg_gjetHLT}
 Both the L1T and HLT can be prescaled in order to suppress the very high rate low energy events. For the HLTs used in the $\gamma$jets event selection:
 \texttt{HLT\_Photon<$p_T$>\_R9Id90\_HE10\_IsoM}, \\
  for $p_T$ = 22, 30, 36, 50, 75, 90, 120,165 GeV:
@@ -296,7 +296,7 @@ For photon triggers with $p_T$ of 50 GeV and higher, the L1T prescale has no eff
 \end{figure}
 
 \subsection{Physical ${p_{T}}^{miss}$ Subtraction}
-Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are completely instrumental. However, processes like $W\gamma\rightarrow\ell\nu\gamma$ with physical ${p_{T}}^{miss}$ can also end in the SinglePhone dataset. To model the kinematics of the $\gamma$jets process better, events with physical ${p_{T}}^{miss}$ are subtracted from the SinglePhoton dataset using MC. MC samples shown in Table~\ref{tab:bg_photonMC} are used to describe the single photon dataset. Figures~\ref{fig:pho_met} and \ref{fig:pho_metpara} show the comparisons of the SinglePhoton data and MC for 2016 full dataset. The SinglePhoton HLT set discussed above has been applied on both MC and data, and the HLT prescale reweighting applies too. A simple cutting-and-counting photon trigger efficiency is performed and the ratios between data and MC are applied as HLT efficiency SF on the MC samples. Nice agreement between the SinglePhoton data and MC is observed.
+Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are completely instrumental. However, processes like $W\gamma\rightarrow\ell\nu\gamma$ with physical ${p_{T}}^{miss}$ can also end in the SinglePhone dataset. To model the kinematics of the $\gamma$jets process better, events with physical ${p_{T}}^{miss}$ are subtracted from the SinglePhoton dataset using MC. MC samples shown in Table~\ref{tab:bg_photonMC} are used to describe the single photon dataset. Figures~\ref{fig:pho_met} and \ref{fig:pho_metpara} show the comparisons of the SinglePhoton data and MC for 2016 full dataset. The same set of SinglePhoton HLTs listed in Section~\ref{sec:bg_gjetHLT} has been applied on the MC samples, and the HLT prescale corrections are applies too. The discrepancy in the trigger efficiencies between MC and data is evaluated and addressed by the HLT efficiency corrections on the MC samples.
 
 \begin{table}[htbh]
   \begin{center}
@@ -335,14 +335,6 @@ Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are com
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=0.48\linewidth, page=3]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
-\includegraphics[width=0.48\linewidth, page=4]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
-\caption{The original photon $p_T$ (left) and $\eta$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
-\label{fig:pho_pteta}
-\end{figure}
-
-\begin{figure}[htbp!]
-\centering
 \includegraphics[width=0.48\linewidth, page=6]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
 \includegraphics[width=0.48\linewidth, page=9]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
 \caption{The photon ${p_{T}}^{miss}$ (left) and $sumET$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
@@ -358,18 +350,18 @@ Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are com
 \end{figure}
 
 \vspace{0.3cm}
-For the purpose of physical ${p_{T}}^{miss}$ subtraction from the single photon data, the physical ${p_{T}}^{miss}$ MC samples are used together with the SinglePhoton dataset, but with a scale factor of $-1$.
+The MC components with physical ${p_{T}}^{miss}$ in the final states, such as $Z\rightarrow\nu\nu$, $Z\gamma\rightarrow\nu\nu\gamma$, $W\gamma\rightarrow\ell\nu\gamma$, $W\rightarrow\ell\nu$, are subtracted from the SinglePhoton data, by merging these MC events into the photon data sample, with a weight of $-1$.
 
-\subsection{Photon $p_T$ to Z $p_T$ Reweighting}
-In theory, the kinematic signature of the $\gamma$jets events is expected to be similar to Zjets events, especially when it comes to high energy region where the mass of Z bosons can be neglected. But it cannot be taken for granted in experiment, where detector effects exist, and more importantly, the lepton selections for the Z boson reconstruction in this analysis cannot be repeated on the photons. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
+\subsection{Photon $\bold{p_T}$ to Z $\bold{p_T}$ Reweighting}
+The kinematic signature of $\gamma$jets events is expected to be similar to Zjets events, especially in the high energy region where the mass of Z bosons can be neglected. However, at lower energies the mass effects will alter the kinematics, and more importantly, the lepton selections applied in the Z boson reconstruction have different efficienies compared to that for the photon reconstruction. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
 
 \vspace{0.3cm}
-The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8, with inclusive cross-section of 5765.4 pb ($\pm 1.7\%$ PDF uncertainty) calculated at NNLO from FEWZ 3.1~\cite{bg_fewz}, and differential cross-section reweighted to that measured from the 2015 CMS data~\cite{bg_2015zjetxsec} on the generator level. The standard preselection is applied to the MC samples, with all efficiency reweightings applied. Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu} shows the photon $p_T$ reweighting function for electron channel and muon channel separately. 
+As there is no easy way to extract clean Z boson $p_T$ spectrum from the data with no background processes. The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-50\_TuneCUETP8M1\_13TeV-amcatnloFXFX-pythia8, with inclusive cross-section of 5765.4 pb ($\pm 1.7\%$ PDF uncertainty) calculated at NNLO from FEWZ 3.1~\cite{bg_fewz}, and differential cross-section reweighted to the Zjets differential cross-section measured from the 2015 CMS data~\cite{bg_2015zjetxsec} on the generator level. The standard preselection is applied to the MC samples, with all efficiency reweightings applied. Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu} shows the photon $p_T$ reweighting function for electron channel and muon channel separately. 
 
 \begin{figure}[htbp]
 \centering
   \includegraphics[width=0.9\linewidth]{figures/study_gjets_data_allcorV2_modify_el.pdf}
-  \caption{Photon $p_T$ reweighting function for electron channel.
+  \caption{Photon $p_T$ reweighting function for the electron channel.
  The uncertainty bands includes uncertainties from 2015 CMS Zjets differential cross-section measurements, the statistical uncertainty from Zjets MC sample and $\gamma$jets data sample, and the lepton trigger, ID, ISO efficiency scale factors.}
   \label{fig:photon_pt_weight_el}
 \end{figure}
@@ -377,13 +369,13 @@ The $p_T$ spectrum of the Z bosons is obtained from the MC sample DYJetsToLL\_M-
 \begin{figure}[htbp]
 \centering
   \includegraphics[width=0.9\linewidth]{figures/study_gjets_data_allcorV2_modify_mu.pdf}
-  \caption{Photon $p_T$ reweighting function for muon channel.
+  \caption{Photon $p_T$ reweighting function for the muon channel.
  The uncertainty bands includes uncertainties from 2015 CMS Zjets differential cross-section measurements, the statistical uncertainty from Zjets MC sample and $\gamma$jets data sample, and the lepton trigger, ID, ISO efficiency scale factors.}
   \label{fig:photon_pt_weight_mu}
 \end{figure}
 
 \subsection{Photon Mass Generation}
-Considering the mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}\ref{eqn:intro_MTalt}), it is crucial for the photons in the $\gamma$jets events to have "mass". This is done by a simple random number generation. The Z boson mass distribution is modeled as a function of Z boson $p_T$. A 2D histogram regarding the mass and $p_T$ of the simulated Z bosons is made. Then a mass is randomly generated corresponding to the mass distribution and assigned to a given photon, with its $p_T$ value considered.
+The mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}, \ref{eqn:intro_MTalt}), and must be simulated in the $\gamma$jets events to model the $m_T$ in the Zjets background. This is done by assigning a random mass to the photon based on the Z boson mass distribution and parameterized as a function of Z boson $p_T$.
 
 \vspace{0.3cm}
 Figure~\ref{fig:mz_el_zjets_gjets} and \ref{fig:mz_mu_zjets_gjets}, compare the Z mass distributions of Zjets MC and the simulated Z mass for $\gamma$jets data events, for electron and muon channels separately.

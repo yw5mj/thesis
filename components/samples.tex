@@ -1,13 +1,13 @@
 \section{Data and Triggers}
 \subsection{Data}
-This analysis uses a data sample recorded by the CMS detector during 2016 with an integrated luminosity of 35.9 fb$^{-1}$. The Primary Datasets (PD) used are listed in Table~\ref{tab:samples_data}. 
+This analysis uses a data sample recorded by the CMS detector during 2016 with an integrated luminosity of 35.9 fb$^{-1}$. The data collections and primary datasets (PD) used are listed in Table~\ref{tab:samples_data}. The primary data sets are defined by the presence of identified physics objects.
 \begin{table}[htbp]
 \begin{small}
   \begin{center}
     \caption{Datasets used in the analysis. \label{tab:samples_data}}
     \begin{tabular}{c c}
       \hline\hline
-      Dataset & lumi[fb$^{-1}$]  \\
+      Data collections & lumi[fb$^{-1}$]  \\
       \hline
 %      \texttt{/PD/Run2016B-03Feb2017\_ver1-v1} \\ 
       \texttt{/PD/Run2016B-03Feb2017\_ver2-v2} &  5.78\\
@@ -28,7 +28,7 @@ This analysis uses a data sample recorded by the CMS detector during 2016 with a
 \end{table}
 
 \subsection{High Level Triggers}\label{sec:samples_hlt}
-In this analysis the single lepton (electron or muon) $High\,Level$ triggers without pre-selections on isolation are required for the signal data selection. The single lepton triggers are preferred over the di-lepton triggers, in the consideration of signal protection: the two leptons can be very adjacent to each other and .single photon $High\,Level$ triggers for the $photon+jets$ event selection used in the data-driven Drell-Yan ($Z+jets$) background modeling. The detailed HLT paths are listed in Table~\ref{tab:triggerPaths}. 
+In this analysis the single lepton (electron or muon) $High\,Level$ triggers without pre-selections on isolation are required for the signal data selection. The single lepton triggers are preferred over the di-lepton triggers, to maintain signal efficiency: because the two leptons can be very adjacent to each other and therefore difficult to identify at trigger level. Single photon $High\,Level$ triggers for the $photon+jets$ event selection are used in the data-driven Drell-Yan ($Z+jets$) background modeling. The detailed HLT paths are listed in Table~\ref{tab:triggerPaths}. 
 
 \begin{table}[htbp!]
 %\begin{footnotesize}
@@ -51,10 +51,10 @@ Photon \\ \texttt{HLT\_Photon}PT\texttt{\_R9Id90\_HE10\_IsoM},  for PT = 22,30,3
 
 
 \section{Monte Carlo Simulation Samples}
-The Monte Carlo (MC) simulation samples are used in this analysis, both to help modeling the SM background accurately to confront the data selected from the experiment, and to help predicting the likelihood of the existence of the Bulk Graviton signal. Therefore, simulation samples for both SM background and signal are required. The Parton Distribution Functions (PDF), which describe the fraction of momentum a parton carries within a proton, are modeled using the NNPDF3.0~\cite{sample_nnpdf30} parametrization, based on the recommendation of the PDF4LHC team~\cite{sample_pdf4lhc}. The simulation process can be seen in 3 stages: the simulation for the core physics process including the subsequent decays, handled by matrix element generators; the simulation for the hadron showering and hadronization processes, handled by parton shower generators, which is Pythia8.212~\cite{sample_pythia} for this analysis; and the simulation for the experimental observation from the detector, based on GEANT4~\cite{sample_geant4}. A random number of extra pileup interactions are also added for every MC event to better match the data from the experiment. The MC samples used in this analysis are in the format of standard CMS Mini-AOD~\cite{sample_miniaod}, in the campaign of RunIISummer16.
+Monte Carlo (MC) simulation samples are used in this analysis, both to help modeling the SM background accurately to confront the data selected from the experiment, and to predicte the likelihood of the existence of the Bulk Graviton signal. Therefore, simulation samples for both SM background and signal are required. The Parton Distribution Functions (PDF), which describe the fraction of momentum a parton carries within a proton, are modeled using the NNPDF3.0~\cite{sample_nnpdf30} parametrization, based on the recommendation of the PDF4LHC team~\cite{sample_pdf4lhc}. The simulation process includes 3 stages: the simulation for the core physics process including the subsequent decays, handled by matrix element generators; the simulation for the hadron showering and hadronization processes, handled by a parton shower generator, which is Pythia8.212~\cite{sample_pythia} for this analysis; and the simulation for the experimental observation from the detector, based on GEANT4~\cite{sample_geant4}. A random number of extra pileup interactions are also added for every MC event to better match the data from the experiment. The MC samples used in this analysis are in the format of the standard CMS Mini-AOD~\cite{sample_miniaod}, used in RunIISummer16 analysis campaign.
 
 \subsection{Standard Model Samples}
-The SM background in this analysis is mostly dominated by the $Z+jets$ process. The other main source of the background besides $Z+jets$ are the nonresonant production of $\ell$ and ${p_{T}}^{miss}$ final states, including $t\bar{t}$ and $WW$ processes, and the resonant background from SM production of diboson events, composed mainly of $ZZ$ and $WZ$ processes. 
+The SM background in this analysis is mostly dominated by the $Z+jets$ process. The other main sources of the background besides $Z+jets$ are the nonresonant production of $\ell$ and ${p_{T}}^{miss}$ final states, including $t\bar{t}$ and $WW$ processes, and the resonant background from SM production of diboson events, composed mainly of $ZZ$ and $WZ$ processes. 
 
 \vspace{0.3cm}
 Background samples used in this analysis are listed in Table~\ref{tab:80xMC-samples}.
@@ -96,11 +96,10 @@ calculated at LO, NLO or NNLO level.
     \end{scriptsize}
   \end{center}
 \end{table}
-
-In the list, the "TuneCUETP8M1" tag stands for the event tune for the pythia generator~\cite{sample_pythiatune}; "amcatnloFXFX" in a sample name indicates that the sample is generated by the MadGraph5\_aMC@NLO 2.3.3~\cite{sample_amcatnlo} framework with next-to-leading order (NLO) matrix elements, merged with pythia for parton shower matching using the merging scheme of Frederix and Frixione (FxFx)~\cite{sample_fxfx}; "powheg" means the Powheg 2.0~\cite{sample_powheg} generator is used as the matrix element generator. More photon related SM MC samples are also used for the Zjets background modeling while applying the photon+jet data driven method, and will be discussed in Section~\ref{sec:dybk}
+In the table, the "TuneCUETP8M1" tag stands for the event tune for the Pythia generator~\cite{sample_pythiatune}; "amcatnloFXFX" in a sample name indicates that the sample is generated by the MadGraph5\_aMC@NLO 2.3.3~\cite{sample_amcatnlo} framework with next-to-leading order (NLO) matrix elements, merged with Pythia for parton shower matching using the merging scheme of Frederix and Frixione (FxFx)~\cite{sample_fxfx}; "powheg" means the Powheg 2.0~\cite{sample_powheg} generator is used as the matrix element generator. More photon related SM MC samples are also used for the Zjets background modeling while applying the photon+jet data driven method, and will be discussed in Section~\ref{sec:dybk}
 
 \subsection{Signal Samples}
-Two sets of MC simulation samples are generated for the signal. For the benchmark model, the signal events are generated at leading order for the bulk graviton model by the MadGraph5\_aMC@NLO 2.3.3 matrix element generator and pythia 8.212. Because the expected width is small compared to detector resolution for reconstructing the signal, we use a zero width approximation for generating signal events. The mass range of the generated signal events is between 600 GeV and 2500 GeV. Table~\ref{tab:sample_massps} shows the mass points generated and used in this analysis, together with their cross-sections calculated at NLO level with NLO QCD corrections, for $\tilde{k}=0.5$.
+Two sets of MC simulation samples are generated for the signal. For the benchmark model, the signal events are generated at leading order for the bulk graviton model by the MadGraph5\_aMC@NLO 2.3.3 matrix element generator and Pythia 8.212. Because the expected width ($\Gamma$) is small compared to detector resolution for reconstructing the signal, we use a zero width approximation for generating signal events. The mass range of the generated signal events is between 600 GeV and 2500 GeV. Table~\ref{tab:sample_massps} shows the mass points generated and used in this analysis, together with their calculated cross-sections with NLO QCD corrections, for $\tilde{k}=0.5$.
 
 \begin{table}[htbp]
   \begin{center}
@@ -132,4 +131,4 @@ Two sets of MC simulation samples are generated for the signal. For the benchmar
 \end{table}
 
 
-In addition, a more general version of the bulk graviton decaying to ZZ is generated using JHU Generator 7.0.2~\cite{sample_jhugen1,sample_jhugen2,sample_jhugen3} and Pythia8. This set of the Bulk Graviton samples contains the same mass points with those generated by Madgraph, but instead of narrow width assumption, graviton width are generated to be 0\%, 10\%, 20\% and 30\% of the corresponding graviton mass. Also the productions via both gluon fusion and $q\bar{q}$ annihilation are generated separately for this set of signal samples.
+In addition, a more general version of the bulk graviton decaying to ZZ is generated using JHU Generator 7.0.2~\cite{sample_jhugen1,sample_jhugen2,sample_jhugen3} and Pythia. This set of the Bulk Graviton samples contains the same mass points with those generated by Madgraph, but a narrow width is not assumed, and graviton samples are generated with $\Gamma =$ 0\%, 10\%, 20\% and 30\% of the corresponding graviton mass. Production via both gluon fusion and $q\bar{q}$ annihilation is generated separately for this set of signal samples.

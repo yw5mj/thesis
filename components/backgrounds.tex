@@ -261,7 +261,7 @@ The Zjets background is characterized by a transversely boosted Z boson and a ha
 \end{itemize}
 \item \textbf{${p}_{T}^{\ell\ell}$ correction for photon data}
 \begin{itemize}
-\item Photon $p_T$ to Z $p_T$ Reweighting in Section~\ref{sec:bg_gjetpt}
+\item ${p_T}^{\gamma}$ to ${p_T}^Z$ Reweighting in Section~\ref{sec:bg_gjetpt}
 \end{itemize}
 \item \textbf{$m_{\ell\ell}$ correction for photon data}
 \begin{itemize}
@@ -372,7 +372,7 @@ Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are com
 \vspace{0.3cm}
 The MC components with physical ${p_{T}}^{miss}$ in the final states, such as $Z\rightarrow\nu\nu$, $Z\gamma\rightarrow\nu\nu\gamma$, $W\gamma\rightarrow\ell\nu\gamma$, $W\rightarrow\ell\nu$, are subtracted from the SinglePhoton data, by merging these MC events into the photon data sample, with a weight of $-1$.
 
-\subsection{Photon $p_T$ to Z $p_T$ Reweighting}\label{sec:bg_gjetpt}
+\subsection{${p_T}^{\gamma}$ to ${p_T}^Z$ Reweighting}\label{sec:bg_gjetpt}
 The kinematic signature of $\gamma$jets events is expected to be similar to Zjets events, especially in the high energy region where the mass of Z bosons can be neglected. However, at lower energies the mass effects will alter the kinematics, and more importantly, the lepton selections applied in the Z boson reconstruction have different efficienies compared to that for the photon reconstruction. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
 
 \vspace{0.3cm}
@@ -677,26 +677,26 @@ Table~\ref{tab:nonresuncert} summarizes the uncertainties that have been evaluat
 
 \clearpage
 \section{Resonant Background Modeling}
-The resonant background in this analysis contains mainly SM $qq\rightarrow ZZ\rightarrow 2\ell 2\nu$ process, as well as WZ processes and ZZ processes with llqq or 4l final states. This fraction of background is modeled by MC samples. For the $qq\rightarrow ZZ\rightarrow 2\ell 2\nu$ sample (ZZTo2L2Nu\_13TeV\_powheg\_pythia8), NNLO QCD correction~\cite{bg_nnloqcd} and NLO EW correction~\cite{bg_nloqed1,bg_nloqed2} are applied.
+The resonant background in this analysis contains mainly SM $qq\rightarrow ZZ\rightarrow 2\ell 2\nu$ process, as well as WZ processes and ZZ processes with $\ell\ell$qq or 4$\ell$ final states. This component of the background is modeled by MC samples. For the $qq\rightarrow ZZ\rightarrow 2\ell 2\nu$ sample (ZZTo2L2Nu\_13TeV\_powheg\_pythia8), NNLO QCD~\cite{bg_nnloqcd} and NLO EW corrections~\cite{bg_nloqed1,bg_nloqed2} are applied.
 
 \vspace{0.3cm}
-The NNLO/NLO QCD correction is parametrized and applied as a function of M(ZZ) 
+The NNLO/NLO QCD correction is parametrized and applied as a function of $m_{ZZ}$ 
 at generator level. 
 The correction and the uncertainty band are shown on Figure~\ref{fig:qqzz_nnlo_qcd}.
 The average NNLO/NLO QCD correction k-factor is 1.11 with an uncertainty of 3\%.
-For generator level M(ZZ)~$>$~500~GeV, the average k-factor and uncertainty are applied. 
+For generator level $m_{ZZ}$~$>$~500~GeV, the average k-factor and uncertainty are applied. 
 
 \begin{figure}[htbp!]
 \centering
   \includegraphics[width=0.48\linewidth]{figures/h_nnlo_to_nlo_vs_mzz.pdf}
-  \caption{The NNLO/NLO QCD correction and error band as a function of generator level M(ZZ) for SM qqZZ process.}
+  \caption{The NNLO/NLO QCD correction and error band as a function of generator level $m_{ZZ}$ for SM qqZZ process.}
   \label{fig:qqzz_nnlo_qcd}
 \end{figure}
 
 \vspace{0.3cm}
 The NLO/LO EW correction is parametrized as a function of initial states quark flavors and event kinematic variables $\hat{s}$ and $\hat{t}$
 in the center of mass frame at generator level. 
-Variable $\hat{s}$ is the center of mass energy, corresponding to $m_{ZZ}$,
+The variable $\hat{s}$ is the partonic center of mass energy, corresponding to $m_{ZZ}$,
 and $\hat{t}$ is computed as
 \begin{align*}
 \hat{t} = \left(p^*_{q_1}-p^*_{Z_1}\right)^2 & = p_{q_1}^{*2} +
@@ -708,7 +708,7 @@ m_{Z}^{2}} \right) \\
 \sqrt{\frac{\hat{s}^2}{4} - m_{Z}^{2}\hat{s}},
 \end{align*}
 where $p^*_{q_1}$ is the four momentum of the first quark initiating the hard process and 
-$p^*_{Z_1}$  is the four momentum of the first Z boson, and quarks masses are neglected.
+$p^*_{Z_1}$  is the four momentum of the first Z boson, and quark masses are neglected.
 The angle $\theta$ is the angle between the Z boson and the direction of the
 incident quarks in the center-of-mass frame of the two Z bosons. 
 Considering the radiation of gluons emitted at small angles, the direction of the incident
@@ -718,7 +718,7 @@ quarks is approximately computed as
 \hat{\vec{p}}_{q_2b}}{\left|\left( \hat{\vec{p}}_{q_1b} -
 \hat{\vec{p}}_{q_2b} \right)\right|} \cdot \hat{\vec{p}}_{Z_1b},
 \end{equation*}
-where $\hat{\vec{p}}_{q_i/Z_ib}$ represents the unitary vector of the
+where $\hat{\vec{p}}_{q_i/Z_ib}$ represents the unitary direction vector of the
 $i$th quark/$Z$ boson after the Lorentz boost. 
 
 \vspace{0.3cm}
@@ -730,19 +730,19 @@ The NLO/LO EW correction is only appropriate for on-shell Z with $m_{ZZ}>2 m_{Z}
 \begin{figure}[htbp!]
 \centering
   \includegraphics[width=0.48\linewidth]{figures/ewkfactor.pdf}
-  \caption{The NLO/LO EW correction and error band as a function of generator level M(ZZ) for SM qqZZ process.}
+  \caption{The NLO/LO EW correction and error band as a function of generator level $m_{ZZ}$ for SM qqZZ process.}
   \label{fig:qqzz_nlo_ew}
 \end{figure}
 
 \clearpage
 \section{Preselection Plots}
-Figure~\ref{fig:gjet_rho} to \ref{fig:gjet_metperp} are the data vs background plots in the preselection region, with all the backgrounds modeled in the method discussed above. 
+Figures~\ref{fig:gjet_rho} to \ref{fig:gjet_metperp} show the data vs background distributions in the preselection region, with all the backgrounds modeled using the methods discussed above. 
 
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=0.46\linewidth, page=1]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth, page=1]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{N distributions for electron (left) and muon (right) channels
+\caption{Vertex multiplicity distributions for electron (left) and muon (right) channels
 comparing data and background.}
 \label{fig:gjet_nvtx}
 \end{figure}
@@ -751,7 +751,7 @@ comparing data and background.}
 \centering
 \includegraphics[width=0.46\linewidth, page=2]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth, page=2]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{$\rho$ reco vertices distributions for electron (left) and muon (right)
+\caption{$\rho$ distributions for electron (left) and muon (right)
 channels comparing data and background.}
 \label{fig:gjet_rho}
 \end{figure}
@@ -780,7 +780,7 @@ narrow mass window.}
 \centering
 \includegraphics[width=0.46\linewidth,page=8]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth,page=8]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{Z mass distributions for electron (left) and muon (right) channels
+\caption{Z mass ($m_{\ell\ell}$) distributions for electron (left) and muon (right) channels
 comparing data and background.}
 \label{fig:gjet_mz}
 \end{figure}
@@ -789,7 +789,7 @@ comparing data and background.}
 \centering
 \includegraphics[width=0.46\linewidth,page=9]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth,page=9]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{Z $p_T$ distributions for electron (left) and muon (right) channels
+\caption{${p_T}^Z$ distributions for electron (left) and muon (right) channels
 comparing data and background,
 wide binning.}
 \label{fig:gjet_zpt_wide}
@@ -799,7 +799,7 @@ wide binning.}
 \centering
 \includegraphics[width=0.46\linewidth,page=10]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth,page=10]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_tightzpt50_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{Z $p_T$ distributions for electron (left) and muon (right) channels
+\caption{${p_T}^Z$ distributions for electron (left) and muon (right) channels
 comparing data and background,
 narrow binning.}
 \label{fig:gjet_zpt_narrow}
@@ -843,7 +843,7 @@ channels comparing data and background.}
 
 \clearpage
 \section{Plots in the Signal Region}
-Figure~\ref{fig:SR_gjet_rho} to \ref{fig:SR_gjet_metperp} shows the data vs background plots in the signal region, with all the backgrounds modeled in the method discussed above. 
+Figures~\ref{fig:SR_gjet_rho} to \ref{fig:SR_gjet_metperp} show the data vs background distributions in the signal region, with all the backgrounds modeled using the methods discussed above. 
 \begin{figure}[htbp!]
 \centering
 \includegraphics[width=0.46\linewidth, page=1]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
@@ -858,7 +858,7 @@ comparing data and background, in SR.}
 \centering
 \includegraphics[width=0.46\linewidth, page=2]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth, page=2]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{N reco vertices distributions for electron (left) and muon (right)
+\caption{Vertex multiplicity distributions for electron (left) and muon (right)
 channels comparing data and background, in SR.}
 \label{fig:SR_gjet_nvtx}
 \end{figure}
@@ -897,7 +897,7 @@ comparing data and background, in SR.}
 \centering
 \includegraphics[width=0.46\linewidth,page=9]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth,page=9]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{Z $p_T$ distributions for electron (left) and muon (right) channels
+\caption{${p_T}^Z$ distributions for electron (left) and muon (right) channels
 comparing data and background,
 wide binning, in SR.}
 \label{fig:SR_gjet_zpt_wide}
@@ -907,7 +907,7 @@ wide binning, in SR.}
 \centering
 \includegraphics[width=0.46\linewidth,page=10]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_el_log_1pb.pdf}
 \includegraphics[width=0.46\linewidth,page=10]{figures/ReMiniSummer16_DT_PhReMiniMCRcFixXsec_GMCPhPtWt_SRdPhiGT0p5_puWeightsummer16_muoneg_gjet_metfilter_unblind_mu_log_1pb.pdf}
-\caption{Z $p_T$ distributions for electron (left) and muon (right) channels
+\caption{${p_T}^Z$ distributions for electron (left) and muon (right) channels
 comparing data and background, 
 narrow binning, in SR.}
 \label{fig:SR_gjet_zpt_narrow}

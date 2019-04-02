@@ -251,9 +251,29 @@ As Figures~\ref{fig:mc_nvtx} and \ref{fig:mc_rho} show, even with the pileup rew
 \end{figure}
 
 \vspace{0.3cm}
-The Zjets background is characterized by a transversely boosted Z boson and a hadronic recoil balancing the momentum of the Z boson. The observed ${p_{T}}^{miss}$ in this background is completely instrumental. The photon$+$jets events have a similar kinematic signature as Zjets events, and can be used to model the Zjets background in a data-driven way.
+The Zjets background is characterized by a transversely boosted Z boson and a hadronic recoil balancing the momentum of the Z boson. The observed ${p_{T}}^{miss}$ in this background is completely instrumental. The photon$+$jets events have a similar kinematic signature as Zjets events, and can be used to model the Zjets background in a data-driven way. The ultimate goal would be to use the $\gamma$jets events to model the $m_T$ distribution of the Zjets background. According to Equation~\ref{eqn:intro_MTalt}, $m_T$ is determined by $m_{\ell\ell}$, ${p}_{T}^{\ell\ell}$, ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$, where $m_{\ell\ell}$ is the invariant mass of the lepton pair; ${p}_{T}^{\ell\ell}$ is the $\vec p_T$ sum of the lepton pair; ${p_{T}}^{miss}_\parallel$ refers to the projection of ${p_{T}}^{miss}$ in the direction of ${p}_{T}^{\ell\ell}$ and ${p_{T}}^{miss}_\perp$ is the fraction perpendicular to ${p}_{T}^{\ell\ell}$. It is crucial to model $m_{\ell\ell}$, ${p}_{T}^{\ell\ell}$, ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ well. The workflow of the Zjets data-driven modeling can be summerized as below and will be discussed in the following sections:
+\begin{itemize}
+\item \textbf{photon data cleaning}
+\begin{itemize}
+\item $\gamma$jets Event Selection in Section~\ref{sec:bg_gjetsel}
+\item $\gamma$jets HLT Prescale Reweighting in Section~\ref{sec:bg_gjetHLT}
+\item Physical ${p_{T}}^{miss}$ Subtraction in Section~\ref{sec:bg_gjetphysmet}
+\end{itemize}
+\item \textbf{${p}_{T}^{\ell\ell}$ correction for photon data}
+\begin{itemize}
+\item Photon $p_T$ to Z $p_T$ Reweighting in Section~\ref{sec:bg_gjetpt}
+\end{itemize}
+\item \textbf{$m_{\ell\ell}$ correction for photon data}
+\begin{itemize}
+\item Photon Mass Generation in Section~\ref{sec:gjetm}
+\end{itemize}
+\item \textbf{${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ corrections for photon data}
+\begin{itemize}
+\item ${p_{T}}^{miss}$ Hadronic Recoil Tuning in Section~\ref{sec:gjetmet}
+\end{itemize}
+\end{itemize}
 
-\subsection{$\gamma$jets Event Selection}
+\subsection{$\gamma$jets Event Selection}\label{sec:bg_gjetsel}
 The $\gamma$jets events are selected from the SinglePhoton dataset with HLT \texttt{HLT\_Photon``PT''\_R9Id90\_HE10\_IsoM}, for \texttt{PT} = 22, 30, 36, 50, 75, 90, 120, 165 GeV. The \texttt{Loose} Photon ID defined and recommended by the CMS EGamma POG is applied. Furthermore, MET filters listed in Section~\ref{sec:metfilter} are also required in the photon data selection.
 
 \vspace{0.3cm}
@@ -295,7 +315,7 @@ For photon triggers with $p_T$ of 50 GeV and higher, the L1T prescale has no eff
 \end{center}
 \end{figure}
 
-\subsection{Physical ${p_{T}}^{miss}$ Subtraction}
+\subsection{Physical ${p_{T}}^{miss}$ Subtraction}\label{sec:bg_gjetphysmet}
 Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are completely instrumental. However, processes like $W\gamma\rightarrow\ell\nu\gamma$ with physical ${p_{T}}^{miss}$ can also end in the SinglePhone dataset. To model the kinematics of the $\gamma$jets process better, events with physical ${p_{T}}^{miss}$ are subtracted from the SinglePhoton dataset using MC. MC samples shown in Table~\ref{tab:bg_photonMC} are used to describe the single photon dataset. Figures~\ref{fig:pho_met} and \ref{fig:pho_metpara} show the comparisons of the SinglePhoton data and MC for 2016 full dataset. The same set of SinglePhoton HLTs listed in Section~\ref{sec:bg_gjetHLT} has been applied on the MC samples, and the HLT prescale corrections are applies too. The discrepancy in the trigger efficiencies between MC and data is evaluated and addressed by the HLT efficiency corrections on the MC samples.
 
 \begin{table}[htbh]
@@ -335,9 +355,9 @@ Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are com
 
 \begin{figure}[htbp!]
 \centering
-\includegraphics[width=0.48\linewidth, page=6]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
-\includegraphics[width=0.48\linewidth, page=9]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
-\caption{The photon ${p_{T}}^{miss}$ (left) and $sumET$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
+\includegraphics[width=0.48\linewidth, page=3]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
+\includegraphics[width=0.48\linewidth, page=5]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
+\caption{The photon ${p_T}$ (left) and $\eta$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
 \label{fig:pho_met}
 \end{figure}
 
@@ -345,14 +365,14 @@ Like the Zjets process,  ${p_{T}}^{miss}$ in the process of $\gamma$jets are com
 \centering
 \includegraphics[width=0.48\linewidth, page=7]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
 \includegraphics[width=0.48\linewidth, page=8]{figures/ReMiniAODSummer16HLT_FixXsec_SepProc_PhPtWt_tight_puWeightsummer16_unblind_log_.pdf}
-\caption{The photon ${p_{T}}^{miss}_\parallel$ (left) and ${p_{T}}^{miss}_\perp$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
+\caption{The photon ${p_{T}}^{miss}$ (left) and $\Delta \Phi (p_T ^\gamma ,p_T ^{miss})$ (right) distributions and the MC sample description for the SinglePhoton dataset. }
 \label{fig:pho_metpara}
 \end{figure}
 
 \vspace{0.3cm}
 The MC components with physical ${p_{T}}^{miss}$ in the final states, such as $Z\rightarrow\nu\nu$, $Z\gamma\rightarrow\nu\nu\gamma$, $W\gamma\rightarrow\ell\nu\gamma$, $W\rightarrow\ell\nu$, are subtracted from the SinglePhoton data, by merging these MC events into the photon data sample, with a weight of $-1$.
 
-\subsection{Photon $\bold{p_T}$ to Z $\bold{p_T}$ Reweighting}
+\subsection{Photon $p_T$ to Z $p_T$ Reweighting}\label{sec:bg_gjetpt}
 The kinematic signature of $\gamma$jets events is expected to be similar to Zjets events, especially in the high energy region where the mass of Z bosons can be neglected. However, at lower energies the mass effects will alter the kinematics, and more importantly, the lepton selections applied in the Z boson reconstruction have different efficienies compared to that for the photon reconstruction. To address this issue, the photon $p_T$ distribution is reweighted to match that of the Z $p_T$. 
 
 \vspace{0.3cm}
@@ -374,7 +394,7 @@ As there is no easy way to extract clean Z boson $p_T$ spectrum from the data wi
   \label{fig:photon_pt_weight_mu}
 \end{figure}
 
-\subsection{Photon Mass Generation}
+\subsection{Photon Mass Generation}\label{sec:gjetm}
 The mass of the leptonic Z boson is used in the transverse mass calculation (Equation~\ref{eqn:intro_MT}, \ref{eqn:intro_MTalt}), and must be simulated in the $\gamma$jets events to model the $m_T$ in the Zjets background. This is done by assigning a random mass to the photon based on the Z boson mass distribution and parameterized as a function of Z boson $p_T$.
 
 \vspace{0.3cm}
@@ -396,23 +416,18 @@ Figure~\ref{fig:mz_el_zjets_gjets} and \ref{fig:mz_mu_zjets_gjets}, compare the 
 \label{fig:mz_mu_zjets_gjets}
 \end{figure}
 
-\subsection{${p_{T}}^{miss}$ Hadronic Recoil Tuning}
-A simple single-Gaussian based hadronic recoil fit is developed to tune the ${p_{T}}^{miss}$ of the $\gamma$jets data to match the ${p_{T}}^{miss}$ in the Zjets data.
-This is needed because the energy scale resolutions of leptons, jets, photons are potentially different between $\gamma$jets data and Zjets data. Those differences may introduce difference in the ${p_{T}}^{miss}$ resolution and scale. 
+\subsection{${p_{T}}^{miss}$ Hadronic Recoil Tuning}\label{sec:gjetmet}
+The Zjets process consists of a Z boson to a lepton pair and a hadronic recoil that balancing the Z boson $p_T$ in the transverse plain. As a result, in theory the ${p_{T}}^{miss}$ should be 0. However, due to the limitation on the detector resolutions of leptons and jets, the ${p_{T}}^{miss}$ in Zjets process exists and is purely instrumental. The ${p_{T}}^{miss}$ The energy resolutions of leptons, jets, photons are potentially different between $\gamma$jets data and Zjets data, and those differences may introduce difference in the resolution and scale of reconstructed ${p_{T}}^{miss}$.
 
 \vspace{0.3cm}
-The hadronic recoil fit is performed based on the specific Zjets kinematics that the Z boson and hadronic recoil balancing with each other in the transverse plain.
-As a result, the resulting ${p_{T}}^{miss}$ vector should be pure instrumental, i.e. a 2-dimensional Gaussian function peaked at point $(x,y)=(0,0)$. However, the jets, leptons and photons are potentially have their energy underestimated or overestimated, such as the neutron hadron components in jets, even with the PF algorithms one cannot find a 
-track to replace the less precisely measured hadronic energy in HCAL. These effects result in an imbalance in the Z $p_T$ boost direction, causing the ${p_{T}}^{miss}$ component parallel
-to the Z $p_T$ direction having larger and asymmetric non-Gaussian tails on either the positive or negative side. 
+A single-Gaussian based hadronic recoil fit is developed to tune the ${p_{T}}^{miss}$ of the $\gamma$jets data to match the ${p_{T}}^{miss}$ in the Zjets data. The general idea is to apply correction to the $\gamma$jets data to better discribe the ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ distributions of the Zjets process, where ${p_{T}}^{miss}_\parallel$ refers to the projection of ${p_{T}}^{miss}$ in the direction of ${p}_{T}^{z(\gamma)}$ and ${p_{T}}^{miss}_\perp$ is the fraction perpendicular to ${p}_{T}^{z(\gamma)}$. 
 
 \vspace{0.3cm}
-Though the simple Gaussian based hadronic recoil fit will not fix this imbalance in the Z $p_T$ direction, it can at least be used to correct the Gaussian-core part of the ${p_{T}}^{miss}$ of the $\gamma$jets data to match the Zjets data. Gaussion fits are applied to describe the Gaussion-core of the ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ for each Z $p_T$ or photon $p_T$ bin. Figure~\ref{fig:recoilfit_example_data} give some example plots showing the Gaussian fits for the $p_T$ bins 50-60 GeV for Zjets data, for muon channel and electron channel, for ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$, respectively.
+The ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ are fit with a Gaussian function in the region of [-50, 50] GeV. The Gaussian mean values and resolutions are parameterized as functions of the $p_T$ of Z boson and photon. Figure~\ref{fig:recoilfit_example_data} give some example plots showing the Gaussian fits for the $p_T$ bins 50-60 GeV for Zjets data, for muon channel and electron channel, for ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$, respectively.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.46\linewidth, page=21]{figures/SingleEMU_Run2016Full_03Feb2017_allcorV2_met_para_study_ZSelecLowLPt_mu.pdf}
 \includegraphics[width=0.46\linewidth, page=56]{figures/SingleEMU_Run2016Full_03Feb2017_allcorV2_met_para_study_ZSelecLowLPt_mu.pdf}
-\includegraphics[width=0.46\linewidth, page=21]{figures/SingleEMU_Run2016Full_03Feb2017_allcorV2_met_para_study_ZSelecLowLPt_el.pdf}
 \includegraphics[width=0.46\linewidth, page=21]{figures/SingleEMU_Run2016Full_03Feb2017_allcorV2_met_para_study_ZSelecLowLPt_el.pdf}
 \includegraphics[width=0.46\linewidth, page=56]{figures/SingleEMU_Run2016Full_03Feb2017_allcorV2_met_para_study_ZSelecLowLPt_el.pdf}
 \caption{Example plots for single Gaussian-based ${p_{T}}^{miss}$ hadronic recoil fit of selected Z $p_T$ bin for Zjets data, muon channel (upper), electron channel (lower),${p_{T}}^{miss}_\parallel$ (left), ${p_{T}}^{miss}_\perp$ (right).}
@@ -422,14 +437,10 @@ Though the simple Gaussian based hadronic recoil fit will not fix this imbalance
 
 
 \vspace{0.3cm}
-The comparison of the recoil fit results between Zjets data and $\gamma$jets data are shown on 
+The comparison of the recoil fit results between Zjets data and $\gamma$jets data before correction are shown in 
 Figure~\ref{fig:recoilfit_met_peak_reso_compare_data_gjets_mu}
 and \ref{fig:recoilfit_met_peak_reso_compare_data_gjets_el}
-for muon channel and electron channel respectively. The $\gamma$jets data ${p_{T}}^{miss}_\parallel$ peak and the resolution of ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ are then corrected to match the Zjets data respectively for muon and electron channels based on Figure~\ref{fig:recoilfit_met_peak_reso_compare_data_gjets_mu} and \ref{fig:recoilfit_met_peak_reso_compare_data_gjets_el}. The correction for the photon data is done in the following way:
-\begin{itemize}
-\item Shift the ${p_{T}}^{miss}_\parallel$ peak positions of $\gamma$jets data to match that of the Zjets data;
-\item Scale the ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ resolution of $\gamma$jets data to match that of the Zjets data.
-\end{itemize}
+for muon channel and electron channel respectively. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -455,98 +466,100 @@ ${p_{T}}^{miss}_\parallel$, bottom two for ${p_{T}}^{miss}_\perp$.}
 \end{center}
 \end{figure}
 
+The $\gamma$jets data ${p_{T}}^{miss}_\parallel$ peak and the resolution of ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ are then corrected to match the Zjets data respectively for muon and electron channels based on Figure~\ref{fig:recoilfit_met_peak_reso_compare_data_gjets_mu} and \ref{fig:recoilfit_met_peak_reso_compare_data_gjets_el}. The correction for the photon data is done in the following way:
+\begin{itemize}
+\item Shift the ${p_{T}}^{miss}_\parallel$ peak positions of $\gamma$jets data to match that of the Zjets data;
+\item Scale the ${p_{T}}^{miss}_\parallel$ and ${p_{T}}^{miss}_\perp$ resolution of $\gamma$jets data to match that of the Zjets data.
+\end{itemize}
+
+The peak position correction is only applied to ${p_{T}}^{miss}_\parallel$, as the ${p_{T}}^{miss}$ results from the instrumental imbalance between the Z boson and hadronic recoil, therefore the distribution of ${p_{T}}^{miss}_\parallel$ is more imbalanced while the peak position for ${p_{T}}^{miss}_\perp$ is expected to be 0.
+
 \clearpage
 \section{Non-resonant Background Modeling}
-In this analysis the non-resonance background containing mostly $t\bar{t}$ and WW events is one of the main background, especially in the signal region, because ZJets events have no physical ${p_{T}}^{miss}$ in their final status and therefore can be suppressed by selecting events with high ${p_{T}}^{miss}$. 
-
-\vspace{0.3cm}
-A data driven method is used in the analysis for the non-resonance background modeling. The method is to use the $e\mu$ pairs to describe the non-resonance background in ll (ee or $\mu \mu$) event, based on the fact that as for the non-resonance background, $e\mu$ pairs are supposed to have the same kinematic behavior and similar cross-section as ll (ee or $\mu \mu$) does.
+The non-resonant background contains mostly $t\bar{t}$ and WW events. A data driven method is used in the analysis to model the non-resonant background. The method is to use the $e\mu$ pairs to describe the non-resonant background in $\ell\ell$ (ee or $\mu \mu$) events, based on the fact that in $t\bar{t}$ and WW decays, $e\mu$ pairs have similar kinematic behavior and cross-section as the $\ell\ell$ (ee or $\mu \mu$) decay states.
 
 \subsection{$e\mu$ Pair Selection}
-The 35.8 fb$^{-1}$ 2016 MuonEG dataset is used for the $e\mu$ pair selection.  Events with one $e\mu$ pair or more (no HLT requirement) are selected. If more than 1 $e\mu$ pair exit in one event, the pair with invariant mass closest to Z mass is selected (analogy to the data selection). Electrons are required to pass Loose ID with pfIso, and muons are required to pass High $p_T$ ID and tracker isolation. 
+The 35.8 fb$^{-1}$ 2016 MuonEG dataset is used for the $e\mu$ pair selection.  Events with one or more $e\mu$ pair are selected. If more than one $e\mu$ pair is present in an event, the pair with invariant mass closest to Z boson mass is selected (analogous to the data selection). Electrons are required to pass Loose ID with pfIso, and muons are required to pass High $p_T$ ID and tracker isolation. 
 
 \vspace{0.3cm}
-When the $e\mu$ sample is used as background in the electron channel, selections below are applied (analogy to the electron selection in data: 
+When the $e\mu$ sample is used as background in the electron channel the selections below are applied to match the requirements applied in data: 
 \begin{itemize}
 \item Leading lepton $p_{T}>120GeV$, $|\eta|<2.5$, 
 \item Subleading lepton $p_{T}>35GeV$, $|\eta|<2.5$
 \end{itemize}
-When the sample is used in the muon channel, selections are (analogy to the muon selection in data): 
+When the sample is used in the muon channel the selections are:
 \begin{itemize}
 \item Leading lepton $p_{T}>55GeV$, $|\eta|<2.4$
 \item Subleading lepton $p_{T}>20GeV$, $|\eta|<2.4$. 
 \end{itemize}
 
 \subsection{$e\mu$ Pair Event-based Reweighting}
-Based on the assumption that electrons and muons have the same behavior in the non-resonant background, the kinematic variables' distributions of the electron and muon in the $e\mu$ pair are expected to be identical. However it is not exactly true. Figure~\ref{fig:nonresmuelpt} shows the $p_T$ distribution of electron and muon, and their ratio in the MuonEG dataset.
+Based on the assumption that electrons and muons have the same behavior in the non-resonant background, the distributions of kinematic variables for the electron and muon in the $e\mu$ pair are expected to be nearly identical. However, this symmetry is altered by triggers and reconstruction effects. Figure~\ref{fig:nonresmuelpt} shows the $p_T$ distribution of electron and muon, and their ratio in the MuonEG dataset.
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.95\linewidth]{figures/nonresmuelpt.pdf}
+\includegraphics[width=0.95\linewidth]{figures/nonresmuelpt.png}
 \caption{electron and muon $p_T$ distribution (left) and ratio (right) in the $e\mu$ pair sample selected from MuonEG dataset.}
 \label{fig:nonresmuelpt}
 \end{center}
 \end{figure}
 
 \vspace{0.3cm}
-The discrepancy between the $p_T$ distributions of electrons and muons can result from a lot of factors, such as detector effects, HLT/ID/Iso efficiencies. Event based weighting factors are calculated according to the ratio plot in Figure~\ref{fig:nonresmuelpt}(right):
-\begin{itemize}
-\item  When modeling the electron channel, the weighting factor of the event is the content of the bin corresponding to the true muon in that event. 
-\item  When modeling the muon channel, the weighting factor of the event is the inverse of the content of the bin corresponding to the true electron in the event. 
+The discrepancy between the $p_T$ distributions of electrons and muons can result from many factors, such as detector effects, triggers, identification criteria and isolation efficiencies. Event based weighting factors are calculated according to the ratio plot in Figure~\ref{fig:nonresmuelpt}(right). When modeling the electron channel, the correction factor of the event is set to be the ratio value corresponding to the muon $p_T$ in the $e\mu$ event. Reversly, when modeling the muon channel, the correction factor of the event is the inverse of the ratio value corresponding to the electron $p_T$.
 \end{itemize}
-Figure~\ref{fig:nonresmuelptel} and Figure~\ref{fig:nonresmuelptmu} shows the electron and muon $p_T$ distribution after the reweighting, in muon channel and in electron channel, as well as the ratio.
+Figure~\ref{fig:nonresmuelptel} shows the electron and muon $p_T$ distribution and ratio after the correction for the electron channel, and Figure~\ref{fig:nonresmuelptmu} is for the muon channel.
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.95\linewidth]{figures/nonresmuelptel.pdf}
-\caption{electron and muon $p_T$ distribution (left) and ratio (right) in the $e\mu$ pair sample (from MuonEG dataset), after the event based reweighting, in electron channel}
+\includegraphics[width=0.95\linewidth]{figures/nonresmuelptel.png}
+\caption{electron and muon $p_T$ distribution (left) and ratio (right) in the $e\mu$ pair sample (from MuonEG dataset) after the event based reweighting for the electron channel}
 \label{fig:nonresmuelptel}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.72\linewidth]{figures/nonresmuelptmu.pdf}
-\caption{electron and muon $p_T$ distribution(left) and ratio(right) in the $e\mu$ pair sample (from MuonEG dataset), after the event based reweighting, in muon channel}
+\includegraphics[width=0.95\linewidth]{figures/nonresmuelptmu.png}
+\caption{electron and muon $p_T$ distribution (left) and ratio (right) in the $e\mu$ pair sample (from MuonEG dataset) after the event based reweighting for the muon channel}
 \label{fig:nonresmuelptmu}
 \end{center}
 \end{figure}
 
 \vspace{0.3cm}
-The agreement between the $p_T$ distributions of electrons and muons are improved with the event based reweighting for both the electron channel and muon channel. In the electron channel, both leptons behave like the electron before weighting, and in the muon channel both leptons behave like the muon before weighting. This reweighting suppresses the systematic uncertainty caused by the performance discrepancy between electrons and muons due to detector and reconstruction effects. With the reweighting there are still ~2\% of disagreement between the $p_T$ distributions of electrons and muons, and it is quoted in the systematic uncertainty of this method.
+The agreement between the $p_T$ distributions of electrons and muons are improved with the event based reweighting for both the electron channel and muon channel. In the electron channel, both leptons behave like the electron before weighting, and in the muon channel both leptons behave like the muon before weighting. This reweighting suppresses the systematic uncertainty caused by the performance discrepancy between electrons and muons due to detector and reconstruction effects. With the reweighting there is still a ~2\% of disagreement between the $p_T$ distributions of electrons and muons, and this is quoted as the systematic uncertainty of the method.
 
 \subsection{HLT Efficiency Reweighting}
-As HLT is required in our $\ell \ell$ data selection, while no such HLT for the $e\mu$ sample, data trigger efficiency is calculated and applied in the $e\mu$ sample to simulate the single lepton HLT. With the event based reweighting described above, the electrons and muons in the $e\mu$ pair sample behave very similarly and can be regarded as $\ell \ell$ pairs. Both SingleElectron and SingleMuon trigger efficiency for data are calculated for each event in the $e\mu$ pair data, corresponding to the leading lepton's $p_T$ and $\eta$, regardless whether the leading lepton is a muon or an electron. The trigger efficiency for data is described in Section~\ref{sec:bkg_trig}. The SingleElectron trigger efficiency is applied when the sample is used in the electron channel, similarly the SingleMuon trigger efficiency is applied when the sample is used in the muon channel. The uncertainty of the trigger efficiency is evaluated and quoted as the mean deviation (in percent) among all the selected events of each channel (see Table~\ref{tab:nonresuncert}).
+The effect of the HLT in our $\ell \ell$ data selection is calculated and applied in the $e\mu$ sample to simulate the single lepton HLT. With the event based reweighting described above, the electrons and muons in the $e\mu$ pair sample behave very similarly and can be treated as $\ell \ell$ pairs for the purpose of background studies. Both SingleElectron and SingleMuon trigger efficiency for data are calculated for each event in the $e\mu$ pair data, corresponding to the leading lepton's $p_T$ and $\eta$, regardless of whether the leading lepton is a muon or an electron. The trigger efficiency for data is described in Section~\ref{sec:bkg_trig}. The SingleElectron trigger efficiency is applied when the sample is used in the electron channel, similarly the SingleMuon trigger efficiency is applied when the sample is used in the muon channel. The uncertainty of the trigger efficiency is evaluated and quoted as the standard deviation of the efficiencies among all the selected events for each channel (see Table~\ref{tab:nonresuncert}).
 
 \vspace{0.3cm}
-When applying the SingleLepton trigger efficiency on the MuonEG dataset to emulate the data HLT, the MuonEG dataset is expected to have full acceptance in our preselection region. This explains why no HLT is required in the MuonEG data selection process. By not requiring any MuonEG HLT, events passing any MuonEG HLTs are accepted. Considering the high $p_T$ threshold in the lepton selection, the acceptance of the dataset is high enough and this effect can be ignored compared to the single lepton trigger efficiency uncertainty. In fact, the acceptance of the MuonEG dataset has negligible effects as long as it is consistent in our preselection region, as the $e\mu$ sample would be rescaled as discussed below. To clarify, the $p_T$ thresholds of the MuonEG dataset would not affect our event selection. For the muon channel, we have leading lepton $pt>60 GeV$, and subleading lepton $pt>20 GeV$. And the electron channel has higher lepton $p_T$ selection. The MuonEG dataset contains non-prescaled triggers:
+When applying the SingleLepton trigger efficiency on the MuonEG dataset to emulate the data HLT, the MuonEG dataset is expected to have full acceptance in our preselection region. This explains why no HLT is required in the MuonEG data selection process. By not requiring any MuonEG HLT, events passing any MuonEG HLTs are accepted. Considering the high $p_T$ threshold in the lepton selection, the acceptance of the dataset is high enough and this effect can be ignored compared to the single lepton trigger efficiency uncertainty. In fact, the acceptance of the MuonEG dataset has negligible effect as long as it is consistent in our preselection region, and the $e\mu$ sample is rescaled as discussed below. To clarify, the $p_T$ thresholds of the MuonEG dataset do not affect our event selection. For the muon channel, we require a leading lepton $pt>60 GeV$, and subleading lepton $pt>20 GeV$. The electron channel has higher lepton $p_T$ selection. The MuonEG dataset contains non-prescaled triggers:
 \begin{itemize}
 \item \texttt{HLT\_Mu23\_TrkIsoVVL\_Ele12\_CaloIdL\_TrackIdL\_IsoVL(\_DZ)} 
 \item \texttt{HLT\_Mu12\_TrkIsoVVL\_Ele23\_CaloIdL\_TrackIdL\_IsoVL(\_DZ)}
 \end{itemize}
-and these $p_T$ threshold is much lower than our $p_T$ selection.
+and these $p_T$ thresholds are much lower than our $p_T$ selection.
 
 \subsection{$e\mu$ Events Rescaling}
-To rescale the $e\mu$ samples to fit the nonresonance background and study the agreement of the background sample and data, a nonresonant control region is defined. The scale factor is calculated by equation~\ref{eq:nonresscale}.
+To rescale the $e\mu$ samples to fit the nonresonant background and study the agreement of the background sample and data, a nonresonant control region is defined. The scale factor is calculated by equation~\ref{eq:nonresscale}.
 \begin{equation} \label{eq:nonresscale}
   Scale  =  \frac{N_{data,ll}-N_{MC,reson}}{N_{data,e\mu}}
 \end{equation}
 
-The $N_{data,ll}$ is the number of data events in the control region; $N_{MC,reson}$ is the number of SM background Z event in the control region, including Zjets background and resonance background; the $N_{data,e\mu}$ is the number of $e\mu$ pair data in the control region. To define the control region, the main idea is to suppress the standard deviation of the calculated scale factor, the standard deviation is calculated based on equation~\ref{eq:nonresscale}, and given in equation~\ref{eq:nonresscaledev}.
+The $N_{data,ll}$ is the number of data events in the control region; $N_{MC,reson}$ is the number of background Z events in the control region, including Zjets background and resonant background; the $N_{data,e\mu}$ is the number of $e\mu$ pair events in the control region. To define the control region, the main idea is to suppress the standard deviation of the calculated scale factor. The standard deviation is calculated based on equation~\ref{eq:nonresscale}, and given in equation~\ref{eq:nonresscaledev}.
 \begin{equation} \label{eq:nonresscaledev}
   \sigma_{Scale}  = \sqrt{\frac{\sigma^{2}_{N_{data,ll}}+\sigma^{2}_{N_{MC,reson}}}{(N_{data,ll}-N_{MC,reson})^{2}}+\frac{\sigma^{2}_{N_{data,e\mu}}}{N^{2}_{data,e\mu}}}\times \frac{N_{data,ll}-N_{MC,reson}}{N_{data,e\mu}}
 \end{equation}
 
-Here the statistic uncertainty is considered for both MC and data, and the PDF uncertainty is considered for resonant MC (1.5\%).
+Here the statistical uncertainty is considered for both MC and data, and the PDF uncertainty is considered for resonant MC (1.5\%).
 
 \vspace{0.3cm}
-To suppress scale deviation and resonance background in the CR, selections below are applied: 
+To suppress scale deviation and resonant background in the CR, selections below are applied: 
 \begin{enumerate}
 \item Z mass veto: invariant mass $M<70GeV$ or $M>110GeV$; 
 \item $p_{T}^{Z} > X GeV$;
 \end{enumerate}
 
-To determine the X value ($p_{T}^{Z}$ cut level), a scan over various X values is done, scale and uncertainty vs X is shown in Table~\ref{tab:nonressfdev}. X=60 gives relatively small uncertainty, and is used to define the control region. The scale uncertainty corresponding to X=60 is also counted as the systematic uncertainty.
+To determine the X value ($p_{T}^{Z}$ cut level), a scan over various X values is performed. The calculated scale factor and uncertainty vs X is shown in Table~\ref{tab:nonressfdev}. X=60 gives relatively small uncertainty, and is used to define the control region. The scale uncertainty corresponding to X=60 is also counted as the systematic uncertainty.
 
 \begin{table}[htbp]
   \begin{center}
@@ -575,7 +588,7 @@ To determine the X value ($p_{T}^{Z}$ cut level), a scan over various X values i
 \end{table}
 
 \vspace{0.3cm}
-Electron channel plots in the control region are shown in the Figure~\ref{fig:nonreselcr} and those for the muon channel are shown in the Figure~\ref{fig:nonresmucr}.
+Electron channel plots in the control region are shown in Figure~\ref{fig:nonreselcr} and those for the muon channel are shown in the Figure~\ref{fig:nonresmucr}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -583,7 +596,7 @@ Electron channel plots in the control region are shown in the Figure~\ref{fig:no
 \includegraphics[width=0.39\linewidth, page=2]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_el_.pdf}
 \includegraphics[width=0.39\linewidth, page=3]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_el_.pdf}
 \includegraphics[width=0.39\linewidth, page=4]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_el_.pdf}
-\caption{data-driven non-resonance background in the control region, electron channel plots}
+\caption{Data-driven non-resonant background in the control region, electron channel plots}
 \label{fig:nonreselcr}
 \end{center}
 \end{figure}
@@ -594,16 +607,16 @@ Electron channel plots in the control region are shown in the Figure~\ref{fig:no
 \includegraphics[width=0.39\linewidth, page=2]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_mu_.pdf}
 \includegraphics[width=0.39\linewidth, page=3]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_mu_.pdf}
 \includegraphics[width=0.39\linewidth, page=4]{figures/test_metzpt50_RhoWt_puWeight68075_metfilter_mu_.pdf}
-\caption{data-driven non-resonance background in the control region, muon channel plots}
+\caption{Data-driven non-resonant background in the control region, muon channel plots}
 \label{fig:nonresmucr}
 \end{center}
 \end{figure}
 
 \vspace{0.3cm}
-The control region plots shows that resonance background is heavily suppressed in the CR and data driven non-resonance background agrees well with the data. Also nonresonance $e\mu$ events should have similar cross section with those in ll events, which means that the sum of the scale in electron channel and the scale in muon channel should be close to 1, and from Table~\ref{tab:nonressfdev} we see that at X=60, Scale(ee channel)=0.346, Scale($\mu\mu$ channel)=0.687, adding up to 1.033, which agrees with the prediction.
+The control region plots show that the resonant background is heavily suppressed in the CR and data driven non-resonant background agrees well with the data. Also nonresonant $e\mu$ events should have similar cross section compared to those in $\ell\ell$ events, which means that the sum of the scale factors in the electron channel and the muon channel should be close to 1. From Table~\ref{tab:nonressfdev} we see that at X=60, the scale factor is 0.346 for the electron channel, and 0.687 for the muon channel, adding up to 1.033, which agrees with the prediction.
 
 \subsection{Comparing to MC Modeling}
-Figure~\ref{fig:nonreselzmasscr100} is a comparison of the nonresonant background modeled by data-driven method and the $t\bar{t}+WW$ MC samples as a cross-check of the data-driven method, with $70GeV<M_{Z}<110GeV$ selection, ${p_{T}}^{miss}>50GeV$ and $p_{T}^{Z}>100GeV$ selection (standard signal region selections in this analysis), for electron channel. And similarly Figure~\ref{fig:nonresmuzmasscr100} is for muon region. The data-driven modeling method generally gives a very similar non-resonant background distribution as the MC. However, in the electron channel the yield of the data-driven method is slightly higher than the MC modeling.
+Figure~\ref{fig:nonreselzmasscr100} is a comparison of the nonresonant background modeled by the data-driven method and the $t\bar{t}+WW$ MC samples as a cross-check of the data-driven method, with $70GeV<M_{Z}<110GeV$, ${p_{T}}^{miss}>50GeV$ and $p_{T}^{Z}>100GeV$ (standard signal region selections in this analysis), for electron channel. Similarly Figure~\ref{fig:nonresmuzmasscr100} shows the result for the muon channel. The data-driven modeling method generally gives a very similar non-resonant background distribution as the MC. However, in the electron channel the yield of the data-driven method is slightly higher than the MC modeling.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -613,7 +626,7 @@ Figure~\ref{fig:nonreselzmasscr100} is a comparison of the nonresonant backgroun
 \includegraphics[width=0.39\linewidth, page=2]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_el_.pdf}
 \includegraphics[width=0.39\linewidth, page=5]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_el_.pdf}
 \includegraphics[width=0.39\linewidth, page=4]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_el_.pdf}
-\caption{data-driven non-resonance background and MC non-resonance background comparison, with Z mass selection and $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$, electron channel plots}
+\caption{Data-driven non-resonant background and MC non-resonant background comparison, with Z mass selection and $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$, electron channel plots}
 \label{fig:nonreselzmasscr100}
 \end{center}
 \end{figure}
@@ -626,19 +639,19 @@ Figure~\ref{fig:nonreselzmasscr100} is a comparison of the nonresonant backgroun
 \includegraphics[width=0.39\linewidth, page=2]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_mu_.pdf}
 \includegraphics[width=0.39\linewidth, page=5]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_mu_.pdf}
 \includegraphics[width=0.39\linewidth, page=4]{figures/test_zpt100_log_RhoWt_puWeight68075_metfilter_mu_.pdf}
-\caption{data-driven non-resonance background and MC non-resonance background comparison, with Z mass selection and $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$,muon channel plots}
+\caption{Data-driven non-resonant background and MC non-resonant background comparison, with Z mass selection and $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$,muon channel plots}
 \label{fig:nonresmuzmasscr100}
 \end{center}
 \end{figure}
 
 \vspace{0.3cm}
-The yield discrepancy is evaluated and half of the discrepancy value is quoted as systematic uncertainty (6.7\% for electron channel).
+The yield discrepancy is evaluated and half of the discrepancy value is quoted as a systematic uncertainty (6.7\% for electron channel).
 
 \subsection{Uncertainty Table}
-In addition to the systematic uncertainty of this data-driven method discussed above, another potential source is that all muons have $|\eta|<2.4$, while in the electron channel, each lepton from real non-resonance background can have $|\eta|$ between 2.4 and 2.5, which differs from the $e\mu$ pair data-driven background. Fortunately, less than 0.1\% events with $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$ in the electron channel have either one electron with $|\eta|$ between 2.4 and 2.5, which means that the effect can be neglected. 
+In addition to the systematic uncertainty of this data-driven method discussed above, differences in acceptance are considered. All muons have $|\eta|<2.4$, while in the electron channel, each lepton from real non-resonant background can also have $|\eta|$ between 2.4 and 2.5, which differs from the $e\mu$ pair data-driven background. Fortunately, less than 0.1\% events with $p_{T}^{Z}>100GeV, {p_{T}}^{miss}>50GeV$ in the electron channel have an electron with $|\eta|$ between 2.4 and 2.5, which means that the effect can be neglected. 
 
 \vspace{0.3cm}
-Table~\ref{tab:nonresuncert} summarized the uncertainties that have been discussed concerning this data-driven nonresonant modeling method.
+Table~\ref{tab:nonresuncert} summarizes the uncertainties that have been evaluated for this data-driven nonresonant background modeling method.
 \begin{table}[htbp]
 \begin{small}
   \begin{center}
@@ -649,7 +662,7 @@ Table~\ref{tab:nonresuncert} summarized the uncertainties that have been discuss
       \hline\hline
       Uncertainty & electron channel & muon channel \\
       \hline
-      $\mu$/e Detector-wise/reconstruction difference & 2\% & 2\% \\
+      $e\mu$ pair reweighting & 2\% & 2\% \\
       Trigger efficiency & 6.0\% & 1.3\% \\
       Stat. uncert. of Data and MC, PDF/QCD uncert. of subtracted MCs  & 4.0\% & 2.4\% \\
       Data-driven vs. MC disagreement & 6.7\% & 0.1\% \\

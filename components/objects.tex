@@ -132,13 +132,13 @@ Unlike electrons, the photon Iso has specific requirements on each type of isola
 The CMS muon reconstruction is mainly based on information collected from the tracker and muon chambers. Generally two collections of muon objects are constructed: the global muon and the tracker muon.~\cite{ob_muonconst1}
 \begin{itemize}
 \item A \texttt{Global Muon} starts from a stand-alone track in the muon system. If the stand-alone muon track can be matched to a charged-particle track in the tracking system and the properties of the tracks agree, a combined fit is performed over the two tracks to find a global muon track.
-\item A \texttt{Tracker Muon} starts from a charged-particle track in the tracking system with $p_{T}$ over 0.5 GeV and momentum over 2.5 GeV. If one or more muon segments in the muon chamber system match the extrapolation of the charged-particle track, then the track is considered a tracker muon track.
+\item A \texttt{Tracker Muon} starts from a charged-particle track in the tracking system with $p_{T}$ over 0.5\GeV and momentum over 2.5\GeV. If one or more muon segments in the muon chamber system match the extrapolation of the charged-particle track, then the track is considered a tracker muon track.
 \end{itemize}
 
 The reconstruction of global muons and tracker muons is performed separately. A muon can be reconstructed both as a global muon and as a tracker muon.
 
 \vspace{0.3cm}
-The momenta calculated from the inner tracks are assigned to the muons with $p_{T}$ less than 200 GeV. For those with $p_T$ beyond 200 GeV, the Tune-P algorithm ~\cite{ob_muonconst2} is used: the momenta are calculated from the best fit track among the inner track, the global track, the track combining the inner tracker and the first muon station, and the globally fit track after discarding muon chamber stations with high occupancy. 
+The momenta calculated from the inner tracks are assigned to the muons with $p_{T}$ less than 200\GeV. For those with $p_T$ beyond 200\GeV, the Tune-P algorithm ~\cite{ob_muonconst2} is used: the momenta are calculated from the best fit track among the inner track, the global track, the track combining the inner tracker and the first muon station, and the globally fit track after discarding muon chamber stations with high occupancy. 
 
 \subsection{Muon Identification and Isolation}\label{sec:ob_midiso}
 Charged hadrons can produce fake muon signatures after reconstruction. To suppress the fake rate of reconstructed muons, additional identification requirements are applied for muons used in CMS analyses. In this analysis, two types of muon ID are used: the muon \texttt{High $p_T$} ID and \texttt{Tracker High $p_T$} ID. 
@@ -180,14 +180,14 @@ The muons selected for this analysis are required to be isolated, following the 
 \vspace{0.3cm}
 The isolation requirement is $relIso_{tk}<0.1$ for each muon selected, where $relIso_{tk}$ is the relative tracker Iso and is defined as $relIso_{tk}=Iso_{tk}/p_{T}$.
 
-\section{Missing Transverse Momentum ($p_T ^{miss}$)}
-The Missing Transverse Momentum~\cite{ob_metconst}, denoted by $p_T ^{miss}$ or MET, is calculated as the negative vectorial sum of the momenta of all PF elements,
+\section{Missing Transverse Momentum (\boldmath{\ptmiss})}
+The Missing Transverse Momentum~\cite{ob_metconst}, denoted by \ptmiss or MET, is calculated as the negative vectorial sum of the momenta of all PF elements,
 \begin{equation}
 \vec{p_T} ^{miss} = -\Sigma_{i}^{PF} \vec{P}_{T,i}.
 \label{eqn:ob_metdef}
 \end{equation}
 
-It is often used to indicates the existence of undetected particles in the final state of an event, such as neutrinos. But the $p_T ^{miss}$ signature can also result from instrumental effects due to the non linearity of the calorimeter response for hadronic particles, tracker inefficiencies and minimum energy thresholds in the calorimeters. This bias can be reduced by applying jet energy corrections~\cite{ob_jetcorr} on the particle-level reconstructed jet $p_T$. And thus the corrected missing transverse momentum can be obtained by Equation~\ref{eqn:ob_metcorr}, where the superscript "corr" indicates the corrected values.
+It is often used to indicates the existence of undetected particles in the final state of an event, such as neutrinos. But the \ptmiss signature can also result from instrumental effects due to the non linearity of the calorimeter response for hadronic particles, tracker inefficiencies and minimum energy thresholds in the calorimeters. This bias can be reduced by applying jet energy corrections~\cite{ob_jetcorr} on the particle-level reconstructed jet $p_T$. And thus the corrected missing transverse momentum can be obtained by Equation~\ref{eqn:ob_metcorr}, where the superscript "corr" indicates the corrected values.
 \begin{equation}
 \vec{p_T}^{\text miss,corr} = \vec{p_T} ^{\text miss} - \Sigma_{j}^{jets} (\vec{p_{T,j}} ^{\text corr} - \vec{p}_{T,j} )
 \label{eqn:ob_metcorr}

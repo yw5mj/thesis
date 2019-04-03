@@ -7,13 +7,13 @@ The uncertainty on the integrated luminosity measurement is evaluated by the CMS
 Uncertainties arising from the PDF model and renormalization and factorization scales in fixed-order calculations affect MC signals and backgrounds modeled by MC samples, in terms of cross sections and acceptance. The PDF uncertainty effect is estimated by evaluating all the error sets of NNPDF 3.0 PDF (in the form of PDF uncertainty variation weights stored in the MiniAOD files), following the PDF4LHC prescription~\cite{sample_pdf4lhc}. This contributes a variation of 1.0--3.4\% to the MC background models. As for the simulated signal, the PDF uncertainties on the production cross section can vary between 10-50\% depending on the signal mass, but the effect on the signal acceptance is on the scale of 1\% and is negligible.
 
 \vspace{0.3cm}
-The effect of scale variations is assessed by varying the original factorization and renormalization scales by factors of 0.5 or 2.0. The scale uncertainties are estimated to be about 3--3.5\% each in the production cross section and acceptance for the resonant background. For the Zjets background, the scale choice modifies the normalization by 3.5\%. The acceptance varies by 23~(13)\% in the electron (muon) channel and the corresponding effect is negligibly small for the signal.  An uncertainty of 3.0\% is estimated for the (N)NLO correction to the resonant background.
+The effect of scale variations is assessed by varying the original factorization and renormalization scales by factors of 0.5 or 2.0. The scale uncertainties are estimated to be about 3--3.5\% each in the production cross section and acceptance for the resonant background. For the \Zjets background, the scale choice modifies the normalization by 3.5\%. The acceptance varies by 23~(13)\% in the electron (muon) channel and the corresponding effect is negligibly small for the signal.  An uncertainty of 3.0\% is estimated for the (N)NLO correction to the resonant background.
 
 \subsection{Trigger/Lepton Uncertainty}
 The uncertainties of the HLT efficiency and lepton ID/Iso efficiencies are mainly due to statistics and the $background+signal$ fitting in the tag-and-probe method, as well as a 1\% addition to account for muon tracker inefficiency. These affect the signal and background estimates obtained from both simulation and from control samples in data. The combined effect of these uncertainties on the normalizations of the various samples is found to be 0.4--3.6\%.
 
 \subsection{Missing Transverse Energy Uncertainty}
-Given that ${p_{T}}^{miss}$ is actually a 2-D vector, the uncertainties on both $|{\vec{p_{T}}^{miss}}|$ and $\phi({\vec{p_{T}}}^{miss})$ are evaluated. Considering that all physics objects are involved in the reconstruction of ${p_{T}}^{miss}$, the contributions to the ${p_{T}}^{miss}$ uncertainties includes:
+Given that \ptmiss is actually a 2-D vector, the uncertainties on both $|{\vec{p_{T}}^{miss}}|$ and $\phi({\vec{p_{T}}}^{miss})$ are evaluated. Considering that all physics objects are involved in the reconstruction of \ptmiss, the contributions to the \ptmiss uncertainties includes:
 \begin{itemize}
 \item Jet Energy Scale
 \item Jet Energy Resolution
@@ -28,8 +28,8 @@ These contributions are evaluated separately for both $|{\vec{p_{T}}^{miss}}|$ a
 \subsection{Uncertainties in the Background Modeling methods}
 In addition to the general uncertainties discussed above, uncertainties affecting each background modeling method are also evaluated, including:
 \begin{itemize}
-\item \textbf{${p_T}^{\gamma}$ to ${p_T}^Z$ reweighting uncertainty} shown in Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu}, for Zjets background modeling;
-\item \textbf{Hadronic recoil uncertainty} propagated from the uncertainties of the hadronic recoil Gaussian fittings, for Zjets background modeling;
+\item \textbf{${p_T}^{\gamma}$ to ${p_T}^Z$ reweighting uncertainty} shown in Figure~\ref{fig:photon_pt_weight_el} and \ref{fig:photon_pt_weight_mu}, for \Zjets background modeling;
+\item \textbf{Hadronic recoil uncertainty} propagated from the uncertainties of the hadronic recoil Gaussian fittings, for \Zjets background modeling;
 \item \textbf{Non-resonant background uncertainties} summarized in Table~\ref{tab:nonresuncert};
 \item \textbf{QCD and EW correction uncertainties} shown in Figures~\ref{fig:qqzz_nnlo_qcd} and \ref{fig:qqzz_nlo_ew}.
 \end{itemize}
@@ -44,7 +44,7 @@ The effect of systematic uncertainties on the yields are summarized in Table~\re
 \begin{tabular}{l r c c c c c }
 \hline\hline
 %
-{}	&	Source				&	Signal 	&	Zjets		&	Resonant		&	Non-Reso 				\\ \hline\hline
+{}	&	Source				&	Signal 	&	\Zjets		&	Resonant		&	Non-Reso 				\\ \hline\hline
 {}	&	Luminosity			&	2.5\%	&	2.5\%		&	2.5\%			&	2.5\%					\\
 {}	&	PDF on cross-section		&	-	&	2.3\%		&	1.7\%			&	-						\\
 {}	&	QCD on cross-section		&	-	&	3.5\%		&	3.0\%			&	-						\\
@@ -56,10 +56,10 @@ The effect of systematic uncertainties on the yields are summarized in Table~\re
 {}	&	Lepton ID eff.			&	1.9\%	&	-		&	0.4\%			&	-						\\
 {}	&	Z $p_T$ reweighting		&	-	&	6.8\%		&	-			&	-						\\
 {}	&	Non-reso. scale fact.		&	-	&	-		&	-			&	10.0\%					\\ 
-{}	&	MET lepton/photon $p_T$ 	&	(-)	&	-		&	4.6\%			&	-						\\
-{}	&	MET Jet energy resolution	&	(-)	&	-		&	6.8\%			&	-						\\
-{}	&	MET unclustered-energy		&	(-)	&	-		&	5.5\%			&	-						\\
-{}	&	MET Hadronic recoil		&	-	&	3.4\%		&	-			&	-						\\ 
+{}	&	\ptmiss lepton/photon $p_T$ 	&	(-)	&	-		&	4.6\%			&	-						\\
+{}	&	\ptmiss Jet energy resolution	&	(-)	&	-		&	6.8\%			&	-						\\
+{}	&	\ptmiss unclustered-energy		&	(-)	&	-		&	5.5\%			&	-						\\
+{}	&	\ptmiss Hadronic recoil		&	-	&	3.4\%		&	-			&	-						\\ 
 \hline\hline
 {\bf Muon}&PDF on acceptance			&	1.0\%	&	3.4\%		&	1.0\%			&	-						\\
 {\bf channel}&QCD on acceptance			&  	(-)	&	13.1\%		&	2.9\%			&	-						\\ 
@@ -68,10 +68,10 @@ The effect of systematic uncertainties on the yields are summarized in Table~\re
 {}	&	Tracking eff.			&	1.0\%	&	-		&	1.0\%			&	-					\\
 {}	&	Z $p_T$ reweighting		&	-	&	3.2\%		&	-			&	-						\\
 {}	&	Non-reso. scale fact.		&	-	&	-		&	-			&	2.4\%					\\ 
-{}	&	MET lepton/Photon $p_T$		&	(-)	&	-		&	7.4\%			&	-						\\
-{}	&	MET Jet energy resolution	&	(-)	&	-		&	5.6\%			&	-						\\
-{}	&	MET Unclustered-Energy		&	(-)	&	-		&	6.3\%			&	-						\\
-{}	&	MET Hadronic recoil		&	-	&	2.0\%		&	-			&	-						\\
+{}	&	\ptmiss lepton/Photon $p_T$		&	(-)	&	-		&	7.4\%			&	-						\\
+{}	&	\ptmiss Jet energy resolution	&	(-)	&	-		&	5.6\%			&	-						\\
+{}	&	\ptmiss Unclustered-Energy		&	(-)	&	-		&	6.3\%			&	-						\\
+{}	&	\ptmiss Hadronic recoil		&	-	&	2.0\%		&	-			&	-						\\
 %
 \hline\hline
 \end{tabular}
@@ -80,7 +80,7 @@ The effect of systematic uncertainties on the yields are summarized in Table~\re
 \end{table}
 
 \vspace{0.3cm}
-The distributions of $p_T ^Z$, ${p_{T}}^{miss}$ in the SR with systematic uncertainty are shown in Figs~\ref{fig:sys_uncZpt}, \ref{fig:sys_uncMET}, \ref{fig:sys_uncMT}, for electron and muon channels, to illustrate the overall systematic and statistic uncertainties in this analysis. The shaded band shows the systematic uncertainties in background, while the statistical uncertainty in the data is shown by the error bars.
+The distributions of $p_T ^Z$, \ptmiss in the SR with systematic uncertainty are shown in Figs~\ref{fig:sys_uncZpt}, \ref{fig:sys_uncMET}, \ref{fig:sys_uncMT}, for electron and muon channels, to illustrate the overall systematic and statistic uncertainties in this analysis. The shaded band shows the systematic uncertainties in background, while the statistical uncertainty in the data is shown by the error bars.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.49\linewidth]{figures/sys_elSRuncZpt.png}
@@ -94,24 +94,24 @@ The distributions of $p_T ^Z$, ${p_{T}}^{miss}$ in the SR with systematic uncert
 \begin{center}
 \includegraphics[width=0.49\linewidth]{figures/sys_elSRuncMET.png}
 \includegraphics[width=0.49\linewidth]{figures/sys_muSRuncMET.png}
-\caption{$p_T ^{miss}$ for electron (left) and muon (right) channels comparing the data and background. The expected distribution for a zero width bulk graviton resonance with a mass of 1 TeV is also shown for a value of 1 pb for the product of cross section and branching fraction $\sigma(pp\rightarrow X\rightarrow ZZ)B(ZZ\rightarrow 2\ell 2\mu)$. The lower panels show the ratio of data to the prediction for the background. }
+\caption{\ptmiss for electron (left) and muon (right) channels comparing the data and background. The expected distribution for a zero width bulk graviton resonance with a mass of 1 TeV is also shown for a value of 1 pb for the product of cross section and branching fraction $\sigma(pp\rightarrow X\rightarrow ZZ)B(ZZ\rightarrow 2\ell 2\mu)$. The lower panels show the ratio of data to the prediction for the background. }
 \label{fig:sys_uncMET}
 \end{center}
 \end{figure}
 
 
 \section{Results and Interpretation}
-The $m_T$ distribution is used as the sensitive variable to search for a new resonance decaying to ZZ with the subsequent decay $ZZ\rightarrow 2\ell 2\nu$. A binned likelihood simultaneous fit of the predicted backgrounds to data, combining electron and muon channels, and including the estimated systematic uncertainties are performed and summarized in Table~\ref{tab:yields}. Figure~\ref{fig:sys_uncMT} shows the post-fit $m_T$ distribution in the signal region using only the background models. The expected distribution for a bulk graviton signal with a mass of 1 TeV and an arbitrary product of cross section and branching fraction $\sigma(pp \to X\to ZZ)\, \mathcal{B} (ZZ\to2\ell2\nu)$ of 1\unit{pb} is also shown. The observed distributions are in agreement with fitted SM background predictions.
+The $m_T$ distribution is used as the sensitive variable to search for a new resonance decaying to ZZ with the subsequent decay $ZZ\rightarrow 2\ell 2\nu$. A binned likelihood simultaneous fit of the predicted backgrounds to data, combining electron and muon channels, and including the estimated systematic uncertainties are performed and summarized in Table~\ref{tab:yields}. Figure~\ref{fig:sys_uncMT} shows the post-fit $m_T$ distribution in the signal region using only the background models. The expected distribution for a bulk graviton signal with a mass of 1 TeV and an arbitrary product of cross section and branching fraction $\sigma(pp \to X\to ZZ)\, \mathcal{B} (ZZ\to2\ell2\nu)$ of 1 pb is also shown. The observed distributions are in agreement with fitted SM background predictions.
 
 \begin{table}[htbp]
-\topcaption{Event yields for different background contributions
+\caption{Event yields for different background contributions
 and those observed in data in the electron and
 muon channels. \label{tab:yields}}
 \centering
 \begin{tabular}{l D{,}{\pm}{-1} D{,}{\pm}{-1}}
 {}                &  \multicolumn{1}{c}{Electron channel}   & \multicolumn{1}{c}{Muon channel} \\ \hline
 Data              &   \multicolumn{1}{c}{9336}              &  \multicolumn{1}{c}{52806}          \\[2ex]
-Z$+$jets                  &   8421 , 203    &  44253 , 336 \\
+\Zjets                  &   8421 , 203    &  44253 , 336 \\
 Resonant          &    637 ,  38    &   2599 , 164 \\
 Nonresonant       &    271 ,  28    &   5961 , 211 \\[2ex]
 Total background  &   9329 , 208    &  52813 , 439 \\
@@ -137,15 +137,15 @@ The HiggsCombine Tool~\cite{sys_higgscombinetool} is used to obtain the limits. 
 \item HLT efficiency
 \item lepton ID/Iso efficiency
 \item QCD \& EW corrections for the resonance background
-\item Z $p_T$ reweighting for the Zjets background
-\item MET lepton/photon $p_T$
-\item MET Jet energy resolution
-\item MET unclustered-energy
-\item MET Hadronic recoil 
+\item Z $p_T$ reweighting for the \Zjets background
+\item \ptmiss lepton/photon $p_T$
+\item \ptmiss Jet energy resolution
+\item \ptmiss unclustered-energy
+\item \ptmiss Hadronic recoil 
 \end{itemize}
 
 \vspace{0.3cm}
-Figure~\ref{fig:sys_narrowlimits} shows the expected and observed upper limits on the product of the production cross section and the branching fraction for $X\rightarrow ZZ$ determined at the 95\% confidence level for the zero width benchmark model, electron and muon channels combined, shown with respect to the Graviton mass. Theorectical expectations of $\sigma(pp\rightarrow X\rightarrow ZZ)$ are also shown as a function of the Graviton mass, separately for $\tilde{k}=1.0,0.5,0.1$. The observed limits are within 2 standard deviations of expectations from the background-only model, therefore no evidence of new particle is observed. The hypothesis of $\tilde{k}=0.5$ can be excluded for masses below 800 GeV at 95\% CL, while the current data are not yet sensitive to the hypothesis of $\tilde{k}=0.1$. 
+Figure~\ref{fig:sys_narrowlimits} shows the expected and observed upper limits on the product of the production cross section and the branching fraction for $X\rightarrow ZZ$ determined at the 95\% confidence level for the zero width benchmark model, electron and muon channels combined, shown with respect to the Graviton mass. Theorectical expectations of $\sigma(pp\rightarrow X\rightarrow ZZ)$ are also shown as a function of the Graviton mass, separately for $\tilde{k}=1.0,0.5,0.1$. The observed limits are within 2 standard deviations of expectations from the background-only model, therefore no evidence of new particle is observed. The hypothesis of $\tilde{k}=0.5$ can be excluded for masses below 800\GeV at 95\% CL, while the current data are not yet sensitive to the hypothesis of $\tilde{k}=0.1$. 
 
 \vspace{0.3cm}
 Figure~\ref{fig:sys_narrowlimitselmu} shows the limit plots for electron channel and muon channel separately. The two channels have similar sensitivity, and the combined fit gives better expected results.

@@ -4,9 +4,14 @@ The sources of systematic uncertainty considered include those in the background
 \subsection{Integrated Luminosity Uncertainty}
 The uncertainty on the integrated luminosity measurement is evaluated by the CMS Lumi POG and the value of 2.5\%~\cite{sys_lumi} is recommended for all the CMS analyses using 2016 data corresponding to 35.9 fb$^{-1}$ of integrated luminosity of proton-proton collisions with a center-of-mass energy of 13 TeV. It is applied to all the signal samples and backgrounds in this analysis, because MC samples are involved in all the background modeling methods.
 \subsection{PDF and QCD Scale Uncertainty}
-Uncertainties arising from the PDF model and renormalization and factorization scales in fixed-order calculations affect MC signals and backgrounds modeled by MC samples, in terms of cross sections and acceptance. The effect is estimated by evaluating all the error sets of NNPDF 3.0 PDF (in the form of PDF uncertainty variation weights stored in the MiniAOD files), following the PDF4LHC prescription~\cite{sample_pdf4lhc}. This contributes a variation of 1.0–3.4\% to the MC background models. As for the simulated signal, the PDF uncertainties on the production cross section can vary between 10-50\% depending on the signal mass, but the effect on the signal acceptance is on the scale of 1\% and is negligible.
+Uncertainties arising from the PDF model and renormalization and factorization scales in fixed-order calculations affect MC signals and backgrounds modeled by MC samples, in terms of cross sections and acceptance. The PDF uncertainty effect is estimated by evaluating all the error sets of NNPDF 3.0 PDF (in the form of PDF uncertainty variation weights stored in the MiniAOD files), following the PDF4LHC prescription~\cite{sample_pdf4lhc}. This contributes a variation of 1.0--3.4\% to the MC background models. As for the simulated signal, the PDF uncertainties on the production cross section can vary between 10-50\% depending on the signal mass, but the effect on the signal acceptance is on the scale of 1\% and is negligible.
+
+\vspace{0.3cm}
+The effect of scale variations is assessed by varying the original factorization and renormalization scales by factors of 0.5 or 2.0. The scale uncertainties are estimated to be about 3--3.5\% each in the production cross section and acceptance for the resonant background. For the Zjets background, the scale choice modifies the normalization by 3.5\%. The acceptance varies by 23~(13)\% in the electron (muon) channel and the corresponding effect is negligibly small for the signal.  An uncertainty of 3.0\% is estimated for the (N)NLO correction to the resonant background.
+
 \subsection{Trigger/Lepton Uncertainty}
-The uncertainties of the HLT efficiency and lepton ID/Iso efficiencies are mainly due to statistics and the $background+signal$ fitting in the tag-and-probe method, as well as a 1\% addition to account for muon tracker inefficiency. These affect the signal and the backgrounds modeled by MC samples, on the order of 1\%. 
+The uncertainties of the HLT efficiency and lepton ID/Iso efficiencies are mainly due to statistics and the $background+signal$ fitting in the tag-and-probe method, as well as a 1\% addition to account for muon tracker inefficiency. These affect the signal and background estimates obtained from both simulation and from control samples in data. The combined effect of these uncertainties on the normalizations of the various samples is found to be 0.4--3.6\%.
+
 \subsection{Missing Transverse Energy Uncertainty}
 Given that ${p_{T}}^{miss}$ is actually a 2-D vector, the uncertainties on both $|{\vec{p_{T}}^{miss}}|$ and $\phi({\vec{p_{T}}}^{miss})$ are evaluated. Considering that all physics objects are involved in the reconstruction of ${p_{T}}^{miss}$, the contributions to the ${p_{T}}^{miss}$ uncertainties includes:
 \begin{itemize}
@@ -96,19 +101,23 @@ The distributions of $p_T ^Z$, ${p_{T}}^{miss}$ in the SR with systematic uncert
 
 
 \section{Results and Interpretation}
-The $m_T$ distribution is used as the sensitive variable to search for a new resonance decaying to ZZ with the subsequent decay $ZZ\rightarrow 2\ell 2\nu$. The asymptotic approximation~\cite{sys_cls0} of the frequentist approach $CL_s$ technique~\cite{sys_cls1,sys_cls2,sys_cls3} is applied to determine the expected and observed upper limits for the possible signal strength at 95\% confidence level. The HiggsCombine Tool~\cite{sys_higgscombinetool} is used to obtain the limits. A binned shape analysis is applied considering the statistical uncertainties in the background modeling, and the following sources of systematic uncertaintiess are included by evaluating their corresponding effects on the $m_T$ distributions.
-\begin{itemize}
-\item HLT efficiency
-\item lepton ID/Iso efficiency
-\item QCD \& EW corrections for the resonance background
-\item Z $p_T$ reweighting for the Zjets background
-\item MET lepton/photon $p_T$
-\item MET Jet energy resolution
-\item MET unclustered-energy
-\item MET Hadronic recoil 
-\end{itemize}
+The $m_T$ distribution is used as the sensitive variable to search for a new resonance decaying to ZZ with the subsequent decay $ZZ\rightarrow 2\ell 2\nu$. A binned likelihood simultaneous fit of the predicted backgrounds to data, combining electron and muon channels, and including the estimated systematic uncertainties are performed and summarized in Table~\ref{tab:yields}. Figure~\ref{fig:sys_uncMT} shows the post-fit $m_T$ distribution in the signal region using only the background models. The expected distribution for a bulk graviton signal with a mass of 1 TeV and an arbitrary product of cross section and branching fraction $\sigma(pp \to X\to ZZ)\, \mathcal{B} (ZZ\to2\ell2\nu)$ of 1\unit{pb} is also shown. The observed distributions are in agreement with fitted SM background predictions.
 
-Based on the $m_T$ spectrums of the systematics and background/signal, a binned likelihood simultaneous fit is performed to match the data better. Figure~\ref{fig:sys_uncMT} shows the $m_T$ distribution in the signal region after the background-only fit, with the background systematic uncertainties shown as the shaded band and data statistical uncertainty shown by the error bars. The observed distributions are in agreement with the SM background predictions.
+\begin{table}[htbp]
+\topcaption{Event yields for different background contributions
+and those observed in data in the electron and
+muon channels. \label{tab:yields}}
+\centering
+\begin{tabular}{l D{,}{\pm}{-1} D{,}{\pm}{-1}}
+{}                &  \multicolumn{1}{c}{Electron channel}   & \multicolumn{1}{c}{Muon channel} \\ \hline
+Data              &   \multicolumn{1}{c}{9336}              &  \multicolumn{1}{c}{52806}          \\[2ex]
+Z$+$jets                  &   8421 , 203    &  44253 , 336 \\
+Resonant          &    637 ,  38    &   2599 , 164 \\
+Nonresonant       &    271 ,  28    &   5961 , 211 \\[2ex]
+Total background  &   9329 , 208    &  52813 , 439 \\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{figure}[htbp]
 \begin{center}
@@ -120,10 +129,27 @@ Based on the $m_T$ spectrums of the systematics and background/signal, a binned 
 \end{figure}
 
 \vspace{0.3cm}
-The expected upper limits are obtained from the modeled background and the signal, and the observed limits are then extracted combining the observed data after the simultaneous fit of background and signal for given signal hypotheses, for electron channel, muon channel and two channels combined. 
+The asymptotic approximation~\cite{sys_cls0} of the frequentist approach $CL_s$ technique~\cite{sys_cls1,sys_cls2,sys_cls3} is applied to determine the expected and observed upper limits for the possible signal strength at 95\% confidence level. The same simultaneous combined fit is performed using signal and background distributions after application of the SR selection, to extract the upper limits for a given signal hypothesis. Statistical uncertainties in the background modeling are taken into account by fluctuating the predicted background histograms within an envelope according to uncertainties in each bin. Systematic uncertainties are treated as nuisance parameters, constrained with Gaussian or log-normal probability density functions in the maximum likelihood fit. For the signal, only uncertainties related to luminosity and acceptance contribute in the limit setting procedure. When the likelihoods for electron and muon channels are combined, the correlation of systematic effects is taken into account. 
 
 \vspace{0.3cm}
-Figure~\ref{fig:sys_narrowlimits} shows the expected and observed upper limits on the product of the production cross section and the branching fraction for $X\rightarrow ZZ$ determined at the 95\% confidence level for the zero width benchmark model, electron and muon channels combined, shown with respect to the Graviton mass. Theorectical expectations of $\sigma(pp\rightarrow X\rightarrow ZZ)$ are also shown as a function of the Graviton mass, separately for $\tilde{k}=1.0,0.5,0.1$. The observed limits are within 2 standard deviations of expectations from the background-only model, therefore no evidence of new particle is observed. The hypothesis of $\tilde{k}=0.5$ can be excluded for masses below 800 GeV at 95\% CL, while the current data are not yet sensitive to the hypothesis of $\tilde{k}=0.1$. Figure~\ref{fig:sys_narrowlimitselmu} shows the limit plots for electron channel and muon channel separately.
+The HiggsCombine Tool~\cite{sys_higgscombinetool} is used to obtain the limits. A binned shape analysis is applied, and the shape effects on the $m_T$ distributions from the following sources of systematic uncertaintiess are evaluated.
+\begin{itemize}
+\item HLT efficiency
+\item lepton ID/Iso efficiency
+\item QCD \& EW corrections for the resonance background
+\item Z $p_T$ reweighting for the Zjets background
+\item MET lepton/photon $p_T$
+\item MET Jet energy resolution
+\item MET unclustered-energy
+\item MET Hadronic recoil 
+\end{itemize}
+
+\vspace{0.3cm}
+Figure~\ref{fig:sys_narrowlimits} shows the expected and observed upper limits on the product of the production cross section and the branching fraction for $X\rightarrow ZZ$ determined at the 95\% confidence level for the zero width benchmark model, electron and muon channels combined, shown with respect to the Graviton mass. Theorectical expectations of $\sigma(pp\rightarrow X\rightarrow ZZ)$ are also shown as a function of the Graviton mass, separately for $\tilde{k}=1.0,0.5,0.1$. The observed limits are within 2 standard deviations of expectations from the background-only model, therefore no evidence of new particle is observed. The hypothesis of $\tilde{k}=0.5$ can be excluded for masses below 800 GeV at 95\% CL, while the current data are not yet sensitive to the hypothesis of $\tilde{k}=0.1$. 
+
+\vspace{0.3cm}
+Figure~\ref{fig:sys_narrowlimitselmu} shows the limit plots for electron channel and muon channel separately. The two channels have similar sensitivity, and the combined fit gives better expected results.
+
 
 \begin{figure}[htbp]
 \begin{center}
